@@ -1,5 +1,5 @@
 React.render(
-React.createElement(Router, {pushState: true, root: ""}, 
+React.createElement(Router, {root: ""}, 
 	React.createElement(Content, {path: "", reactClass: "Top"}), 
 	React.createElement(Content, {path: "aboutus", reactClass: "AboutUs"}), 
 	React.createElement(Content, {path: "concerts", reactClass: "Concerts"}), 
