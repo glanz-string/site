@@ -1,4 +1,7 @@
 var Concerts = React.createClass({displayName: "Concerts",
+  onClick: function () {
+    Backbone.history.navigate("tickets",true);
+  },
 	render: function () {
     console.log(this.props.params)
 		console.log("concerts rendered");
@@ -27,7 +30,7 @@ React.createElement("br", null),
 "ベートーヴェン「交響曲第二番」", React.createElement("br", null), 
 "※全て弦楽合奏版"
       ), 
-      React.createElement("button", {className: "mt-2em ml-10px"}, "チケットはこちら")
+      React.createElement("button", {className: "mt-2em ml-10px", onClick: this.onClick}, "チケットはこちら")
     ), 
     React.createElement("div", {className: "column2-right images"}, 
       React.createElement("img", {src: "/images/concerts/2_1.jpg"})
