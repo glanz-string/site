@@ -333,3 +333,9 @@ button:hover {
   line-height: 2em;
   font-size: 18px;
 }
+
+.aboutus:after { /* floatのクリア用 */
+  content: "";
+  display: block;
+  clear: both;
+}
