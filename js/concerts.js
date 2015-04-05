@@ -17,7 +17,7 @@ React.createElement("section", {className: "content mt-30px"},
 "君塚氏、愛を語る！　～弦楽が奏でる愛の物語"
       ), 
       React.createElement("p", {className: "info mt-20px"}, "2015年5月30日(土)　17:30開場　18:00開演", React.createElement("br", null), 
-"かなっくホール", React.createElement("br", null), 
+"横浜市神奈川区民文化センター　かなっくホール", React.createElement("br", null), 
 React.createElement("br", null), 
 "モーツァルト/歌劇「フィガロの結婚」序曲", React.createElement("br", null), 
 "チャイコフスキー/「眠りの森の美女」よりワルツ", React.createElement("br", null), 
