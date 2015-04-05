@@ -314,3 +314,22 @@ button:hover {
   background-color: #621f1f;
   margin-right: 1em;
 }
+
+/* about us */
+
+.aboutus .column2-left {
+  width: 40%;
+  float: left;
+}
+.aboutus .column2-right {
+  width: 60%;
+  float: left;
+}
+.aboutus img {
+  width: 300px;
+  height: auto;
+}
+.aboutus .text {
+  line-height: 2em;
+  font-size: 15px;
+}
