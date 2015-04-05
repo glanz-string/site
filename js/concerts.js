@@ -29,14 +29,13 @@ React.createElement("br", null),
       React.createElement("button", {className: "mt-2em ml-10px"}, "チケットはこちら")
     ), 
     React.createElement("div", {className: "column2-right images"}, 
-      React.createElement("img", {src: "81VDaop7qIL._SL290_.jpg"}), 
-      React.createElement("img", {src: "Kalinnikov2.jpg"})
+      React.createElement("img", {src: "/images/concerts/2_1.jpg"})
     )
   ), 
   React.createElement("hr", null), 
   React.createElement("article", {className: "concert mt-10px"}, 
     React.createElement("div", {className: "column2-left"}, 
-      React.createElement("p", {className: "title mt-10px"}, "第1回演奏会n", 
+      React.createElement("p", {className: "title mt-10px"}, "第1回演奏会", 
       React.createElement("span", {className: "past ml-40px"}, "終了")), 
       React.createElement("p", {className: "info mt-20px"}, "2014年5月31日(土)　17:30開場　18:00開演", React.createElement("br", null), 
 "横浜市緑区民文化センター", React.createElement("br", null), 
