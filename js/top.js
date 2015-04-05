@@ -9,14 +9,8 @@ React.createElement("div", {className: "top-body-wrap"},
 React.createElement(Header, null), 
 React.createElement(Ad, null), 
 React.createElement("article", {className: "top-info"}, 
-  React.createElement("h1", null, "第2回演奏会", React.createElement("br", null), 
-"メンバーによるプロデュースシリーズ Vol.1", React.createElement("br", null), 
-"君塚氏、愛を語る！　～弦楽が奏でる愛の物語"), 
-  React.createElement("p", null, 
-"2014年5月30日(土)　18:00", React.createElement("br", null), 
-"横浜市神奈川区民文化センター　かなっくホール", React.createElement("br", null), 
-"モーツァルト/歌劇「フィガロの結婚」序曲", React.createElement("br", null), 
-"他", 
+React.createElement("p", null, 
+React.createElement("img", {src: "/images/concerts/2_1.jpg", style: { width: "90%", height: "auto"}}), 
 React.createElement("button", {className: "top-info-button mt-1em", onClick: this.onClick}, "チケットはこちら")
   )
 )
