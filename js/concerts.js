@@ -13,8 +13,8 @@ React.createElement("section", {className: "content mt-30px"},
   React.createElement("article", {className: "concert mt-10px"}, 
     React.createElement("div", {className: "column2-left"}, 
       React.createElement("p", {className: "title mt-10px"}, "第2回演奏会", React.createElement("br", null), 
-"メンバーによるプロデュースシリーズ vol.1", React.createElement("br", null), 
-"君塚氏、愛を語る　～　弦楽が奏でる愛の物語"
+"メンバーによるプロデュースシリーズ Vol.1", React.createElement("br", null), 
+"君塚氏、愛を語る！　～弦楽が奏でる愛の物語"
       ), 
       React.createElement("p", {className: "info mt-20px"}, "2015年5月30日(土)　17:30開場　18:00開演", React.createElement("br", null), 
 "かなっくホール", React.createElement("br", null), 
@@ -24,7 +24,8 @@ React.createElement("br", null),
 "クライスラー/「愛の喜び」", React.createElement("br", null), 
 "シベリウス/「ロマンス」", React.createElement("br", null), 
 "スーク「弦楽セレナーデより第一楽章」", React.createElement("br", null), 
-"ベートーヴェン「交響曲第二番」（弦楽合奏版）"
+"ベートーヴェン「交響曲第二番」", React.createElement("br", null), 
+"※全て弦楽合奏版"
       ), 
       React.createElement("button", {className: "mt-2em ml-10px"}, "チケットはこちら")
     ), 
