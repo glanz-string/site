@@ -339,3 +339,72 @@ button:hover {
   display: block;
   clear: both;
 }
+
+/* thumbnail */
+.thumbnail > img {
+  cursor: pointer;
+}
+.thumbnail .window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 999;
+  overflow: auto;
+
+}
+.thumbnail .window img {
+  cursor: pointer;
+  width: 60% !important;
+  height: auto !important;
+  margin: 20px 20% 20px 20% !important;
+}
+
+.thumbnail-show {
+  visibility: visible;
+  animation: show 1s linear 0s;
+}
+
+.thumbnail-hide {
+  visibility: hidden;
+}
+
+.window .close-button {
+  display: block;
+  position: absolute;
+  font-size: 30px;
+  right: 1em;
+  top: 1em;
+  width: 1em;
+  height: 1em;
+  cursor: pointer;
+}
+.window .close-button:before {
+  content: "";
+  display: block;
+  width: 1em;
+  border-top: solid 0.1em #fff;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 0.5em;
+}
+.window .close-button:after {
+  content: "";
+  display: block;
+  width: 1em;
+  border-top: solid 0.1em #fff;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 0.5em;
+}
+
+@keyframes show {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
