@@ -33,7 +33,8 @@ React.createElement("br", null),
       React.createElement("button", {className: "mt-2em ml-10px", onClick: this.onClick}, "チケットはこちら")
     ), 
     React.createElement("div", {className: "column2-right images"}, 
-      React.createElement(Thumbnail, {src: "/images/concerts/2_1.jpg", alt: "パンフレット"})
+      React.createElement(Thumbnail, {src: "/images/concerts/2_1small.jpg", largeImageSrc: "/images/concerts/2_1.jpg", alt: "パンフレット(表)"}), 
+      React.createElement(Thumbnail, {src: "/images/concerts/2_2small.jpg", largeImageSrc: "/images/concerts/2_2.jpg", alt: "パンフレット(裏)"})
     )
   ), 
   React.createElement("hr", null), 
