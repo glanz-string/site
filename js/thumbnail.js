@@ -9,7 +9,6 @@ var Thumbnail = React.createClass({displayName: "Thumbnail",
 	},
 	render: function () {
 		var cssClass;
-		console.log(this.state.expand)
 		if (this.state.expand) {
 			document.body.style.overflow = "hidden";
 			cssClass = "window thumbnail-show";
@@ -25,10 +24,9 @@ React.createElement("div", {className: "thumbnail"},
 		React.createElement("span", {className: "close-button", onClick:  this.onClick})
 	)
 )
-
 			);
-
-
 	}
 
 })
+
+//  <Thumbnail src="" [largeImageSrc=""] [alt=""] [className=""] [style={}] />

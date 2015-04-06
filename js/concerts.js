@@ -51,7 +51,8 @@ React.createElement("br", null),
 "チャイコフスキー/フィレンツェの想い出", React.createElement("br", null)
       )
     ), 
-    React.createElement("div", {className: "column2-right images"}
+    React.createElement("div", {className: "column2-right images"}, 
+      React.createElement(Thumbnail, {src: "/images/concerts/1_1small.jpg", largeImageSrc: "/images/concerts/1_1.jpg", alt: "パンフレット"})
     )
   )
 ), 
