@@ -21,7 +21,7 @@ var Thumbnail = React.createClass({displayName: "Thumbnail",
 React.createElement("div", {className: "thumbnail"}, 
 	React.createElement("img", {src: this.props.src, alt:  this.props.alt || "", className: this.props.className || null, style: this.props.style || null, onClick:  this.onClick}), 
 	React.createElement("div", {className: cssClass}, 
-		React.createElement("img", {src: this.props.src, alt:  this.props.alt || "", onClick:  this.onClick}), 
+		React.createElement("img", {src: this.props.largeImageSrc || this.props.src, alt:  this.props.alt || "", onClick:  this.onClick}), 
 		React.createElement("span", {className: "close-button", onClick:  this.onClick})
 	)
 )
