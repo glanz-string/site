@@ -10,10 +10,10 @@ SendMail = Backbone.Model.extend({
 	},
 	getToken: function (sucFunc,errFunc) {
 		$.ajax({
-			url: this.hostUrl,
-			type: this.method,
-			dataType: this.dataType,
-			data: { 'token': this.tokenToGetToken },
+			url: this.get('hostUrl'),
+			type: this.get('method'),
+			dataType: this.get('dataType'),
+			data: { 'token': this.get('tokenToGetToken') },
 			success: (function (data) {
 				this.set("token", data['token']);
 				console.log(data);

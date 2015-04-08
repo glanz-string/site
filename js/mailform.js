@@ -11,7 +11,7 @@ React.createElement("input", {onChange: this.setAddress}), React.createElement("
 React.createElement("textarea", {onChange: this.setMessage}), 
 React.createElement("input", {type: "submit", value: "送信"}), React.createElement("br", null), React.createElement("br", null)
 ), 
-this.props.model.get("address"), React.createElement("br", null), 
+this.props.model.get("hostUrl"), React.createElement("br", null), 
 
 this.props.model.get("token")
 )

@@ -9,7 +9,7 @@ React.createElement(Router, {root: ""},
 	React.createElement(Content, {path: "concerts", reactClass: "Concerts"}), 
 	React.createElement(Content, {path: "tickets", reactClass: "Tickets"}), 
 	React.createElement(Content, {path: "contactus", reactClass: "ContactUs"}), 
-	React.createElement(Content, {path: "test", model: sendmail, reactClass: "Test"})
+	React.createElement(Content, {path: "test", reactClass: "Test"})
 )
 , document.body );
 
