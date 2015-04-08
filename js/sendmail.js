@@ -7,49 +7,45 @@ SendMail = Backbone.Model.extend({
 		token: "",
 		address: "",
 		message: "unko",
+		tokenGotten: false
 	},
-	getToken: function (sucFunc,errFunc) {
+	getToken: function () {
 		$.ajax({
 			url: this.get('hostUrl'),
 			type: this.get('method'),
 			dataType: this.get('dataType'),
 			data: { 'token': this.get('tokenToGetToken') },
 			success: (function (data) {
-				this.set("token", data['token']);
-				console.log(data);
-				if (sucFunc) {
-					sucFunc();
-				}
+				this.set({
+					token: data['token'],
+					tokenGotten: true
+				});
 			}).bind(this),
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				if (errFunc) {
-					errFunc();			
-				}
+				this.set({
+					token: data['token'],
+					tokenGotten: false
+				});
 			}
 		});
 	},
 
-	sendMail: function (sucFunc,errFunc) {
+	sendMail: function () {
 		$.ajax({
-			url: this.hostUrl,
-			type: this.method,
-			dataType: this.dataType,
+			url: this.get('hostUrl'),
+			type: this.get('method'),
+			dataType: this.get('dataType'),
 			data: {
-				token: this.token,
-				message: this.address,
-				address: this.message
+				token: this.get('token'),
+				message: this.get('address'),
+				address: this.get('message')
 			},
 			success: function (data) {
 				console.log("success to access to php: " + data.status);
-				if (sucFunc) {
-					sucFunc(data);
-				}
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				console.log("failed to access to php: " + textStatus);
-				if (errFunc) {
-					errFunc(XMLHttpRequest, textStatus, errorThrown);
-				}
+
 			}
 		});
 	}
