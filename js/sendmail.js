@@ -42,14 +42,14 @@ SendMail = Backbone.Model.extend({
 		$.ajax({
 			url: this.get('hostUrl'),
 			type: this.get('method'),
-			dataType: this.get('dataType'),
+//			dataType: this.get('dataType'),
 			data: {
 				token: this.get('token'),
 				address: this.get('address'),
 				message: this.get('message')
 			},
 			success: (function (data) {
-				console.log("success to access to php: " + data.status);
+				console.log("success to access to php: " + data);
 				this.getToken();
 
 				if (data.success) {
