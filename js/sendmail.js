@@ -38,6 +38,7 @@ SendMail = Backbone.Model.extend({
 		if (!this.get("tokenGotten")) {
 			return 0;
 		}
+		this.set("textStatus","送信中")
 		$.ajax({
 			url: this.get('hostUrl'),
 			type: this.get('method'),
@@ -69,7 +70,18 @@ SendMail = Backbone.Model.extend({
 			address: "",
 			message: "",
 		});
-	}
+	},
 
+	initAll: function () {
+		this.set({
+			token: "",
+			address: "",
+			message: "",
+			tokenGotten: false,
+			mailSent: false,
+			textStatus: ""
+		});
+
+	}
 
 });
