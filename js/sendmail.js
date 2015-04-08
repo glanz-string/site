@@ -37,8 +37,8 @@ SendMail = Backbone.Model.extend({
 			dataType: this.get('dataType'),
 			data: {
 				token: this.get('token'),
-				message: this.get('address'),
-				address: this.get('message')
+				address: this.get('address'),
+				message: this.get('message')
 			},
 			success: function (data) {
 				console.log("success to access to php: " + data.status);
