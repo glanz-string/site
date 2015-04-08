@@ -6,8 +6,11 @@ SendMail = Backbone.Model.extend({
 		method: 'POST',
 		token: "",
 		address: "",
-		message: "unko",
-		tokenGotten: false
+		message: "",
+		tokenGotten: false,
+		mailSent: false,
+		textStatus: ""
+
 	},
 	getToken: function () {
 		$.ajax({
@@ -23,14 +26,18 @@ SendMail = Backbone.Model.extend({
 			}).bind(this),
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				this.set({
-					token: data['token'],
-					tokenGotten: false
+					token: "",
+					tokenGotten: false,
+					textStatus: textStatus
 				});
 			}
 		});
 	},
 
 	sendMail: function () {
+		if (!this.get("tokenGotten")) {
+			return 0;
+		}
 		$.ajax({
 			url: this.get('hostUrl'),
 			type: this.get('method'),
@@ -40,13 +47,26 @@ SendMail = Backbone.Model.extend({
 				address: this.get('address'),
 				message: this.get('message')
 			},
-			success: function (data) {
+			success: (function (data) {
 				console.log("success to access to php: " + data.status);
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				console.log("failed to access to php: " + textStatus);
+				if (data.success) {
+					this.getToken();
+					this.clearMail();
+				}
 
-			}
+				this.set("textStatus",data.status);
+			}).bind(this),
+			error: (function (XMLHttpRequest, textStatus, errorThrown) {
+				console.log("failed to access to php: " + textStatus);
+				this.set("textStatus",data.status);
+			}).bind(this)
+		});
+	},
+
+	clearMail: function () {
+		this.set({
+			address: "",
+			message: ""
 		});
 	}
 

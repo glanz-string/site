@@ -1,11 +1,12 @@
 var MailForm = React.createClass({displayName: "MailForm",
 	mixins: [Backbone.React.Component.mixin],
 	componentWillMount: function () {
-		this.props.model.getToken(null,null);
+		this.props.model.getToken();
 	},
 	render: function () {
 		return (
 React.createElement("div", null, 
+this.props.model.get("textStatus"), 
 React.createElement("form", null, 
 React.createElement("input", {onChange: this.setAddress}), React.createElement("br", null), 
 React.createElement("textarea", {onChange: this.setMessage}), 

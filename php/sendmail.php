@@ -31,7 +31,7 @@ if ($_POST['token'] == $GET_TOKEN) {
 		$from = $_POST['address'];
 	} else {
 		echo '{ "success": false, "status": "不正なメールアドレスです。" }';
-		destroy();
+//		destroy();
 		die();
 	}
 	// 特殊文字をhtmlエンティティに変換
