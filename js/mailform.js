@@ -4,15 +4,21 @@ var MailForm = React.createClass({displayName: "MailForm",
 		this.props.model.getToken();
 	},
 	render: function () {
+		if (this.props.model.get('mailSent')) {
+			this.props.model.initMail();
+
+		}
+
+
 		return (
 React.createElement("div", null, 
 this.props.model.get("textStatus"), 
 React.createElement("form", null, 
-React.createElement("input", {onChange: this.setAddress}), React.createElement("br", null), 
-React.createElement("textarea", {onChange: this.setMessage}), 
+React.createElement("input", {value: this.props.model.get("address"), onChange: this.setAddress}), React.createElement("br", null), 
+React.createElement("textarea", {value: this.props.model.get("message"), onChange: this.setMessage}), 
 React.createElement("input", {type: "button", value: "送信", onClick: this.sendMail}), React.createElement("br", null), React.createElement("br", null)
 ), 
-this.props.model.get("token")
+this.props.model.get("address")
 )
 		);
 	},

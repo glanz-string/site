@@ -50,7 +50,10 @@ SendMail = Backbone.Model.extend({
 			success: (function (data) {
 				console.log("success to access to php: " + data.status);
 				this.getToken();
-				this.clearMail();
+
+				if (data.success) {
+					this.clearMail();
+				}
 
 				this.set("textStatus",data.status);
 			}).bind(this),
@@ -64,7 +67,7 @@ SendMail = Backbone.Model.extend({
 	clearMail: function () {
 		this.set({
 			address: "",
-			message: ""
+			message: "",
 		});
 	}
 
