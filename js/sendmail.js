@@ -49,10 +49,8 @@ SendMail = Backbone.Model.extend({
 			},
 			success: (function (data) {
 				console.log("success to access to php: " + data.status);
-				if (data.success) {
-					this.getToken();
-					this.clearMail();
-				}
+				this.getToken();
+				this.clearMail();
 
 				this.set("textStatus",data.status);
 			}).bind(this),
