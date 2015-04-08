@@ -38,12 +38,14 @@ SendMail = Backbone.Model.extend({
 		if (!this.get("tokenGotten")) {
 			return 0;
 		}
-		this.set("textStatus","送信中");
-		this.set("mailSending",true);
+		this.set({
+			textStatus: 送信中,
+			mailSending: true
+		});
 		$.ajax({
 			url: this.get('hostUrl'),
 			type: this.get('method'),
-			// dataType: this.get('dataType'),
+			dataType: this.get('dataType'),
 			data: {
 				token: this.get('token'),
 				address: this.get('address'),
@@ -51,7 +53,6 @@ SendMail = Backbone.Model.extend({
 			},
 			success: (function (data) {
 				console.log("success to access to php: " + data.status);
-				console.log(typeof data)
 
 				this.getToken();
 
@@ -59,11 +60,19 @@ SendMail = Backbone.Model.extend({
 					this.clearMail();
 				}
 
-				this.set("textStatus",data.status);
+				this.set({
+					mailSending: false,
+					textStatus: data.status
+				});
+
 			}).bind(this),
 			error: (function (XMLHttpRequest, textStatus, errorThrown) {
 				console.log("failed to access to php: " + textStatus);
-				this.set("textStatus",textStatus);
+
+				this.set({
+					mailSending: false,
+					textStatus: data.status
+				});
 			}).bind(this)
 		});
 	},
