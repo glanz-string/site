@@ -1,3 +1,7 @@
+var sendmail = new SendMail({
+	hostUrl: "/php/sendmail.php"
+});
+
 React.render(
 React.createElement(Router, {root: ""}, 
 	React.createElement(Content, {path: "", reactClass: "Top"}), 
@@ -5,7 +9,7 @@ React.createElement(Router, {root: ""},
 	React.createElement(Content, {path: "concerts", reactClass: "Concerts"}), 
 	React.createElement(Content, {path: "tickets", reactClass: "Tickets"}), 
 	React.createElement(Content, {path: "contactus", reactClass: "ContactUs"}), 
-	React.createElement(Content, {path: "test", reactClass: "Test"})
+	React.createElement(Content, {path: "test", model: sendmail, reactClass: "Test"})
 )
 , document.body );
 

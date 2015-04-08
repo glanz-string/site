@@ -6,7 +6,7 @@ React.createElement(Header, null),
 React.createElement(Ad, null), 
 
 React.createElement("section", {className: "content mt-30px"}, 
-React.createElement(MailForm, null)
+React.createElement(MailForm, {model: sendmail})
 ), 
 
 React.createElement(Footer, null)
