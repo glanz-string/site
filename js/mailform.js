@@ -8,7 +8,7 @@ var MailForm = React.createClass({displayName: "MailForm",
 		return (
 React.createElement("div", null, 
 this.props.model.get("textStatus"), 
-React.createElement("form", null, 
+React.createElement("form", {onSubmit: this.onSubmit}, 
 React.createElement("input", {value: this.props.model.get("address"), onChange: this.setAddress}), React.createElement("br", null), 
 React.createElement("textarea", {value: this.props.model.get("message"), onChange: this.setMessage}), 
 React.createElement("input", {type: "button", value: "送信", onClick: this.sendMail}), React.createElement("br", null), React.createElement("br", null)
@@ -25,5 +25,8 @@ this.props.model.get("address")
 	},
 	sendMail: function () {
 		this.props.model.sendMail();
+	},
+	onSubmit: function (e) {
+		e.preventDefault();
 	}
 });
