@@ -32,8 +32,8 @@ if ($_POST['token'] == $GET_TOKEN) {
 		$from = $_POST['address'];
 	} else {
 //		echo '{ "success": false, "status": "不正なメールアドレスです。" }';
-		destroy();
-		exit('{ "success": false, "status": "不正なメールアドレスです。" }');
+		echo '{ "success": false, "status": "invalid address" }';
+		exit();
 	}
 	// 特殊文字をhtmlエンティティに変換
 	$message = htmlspecialchars($_POST['message'], ENT_QUOTES, "UTF-8");
