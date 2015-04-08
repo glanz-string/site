@@ -26,14 +26,15 @@ if ($_POST['token'] == $GET_TOKEN) {
 	echo '{ "token": "'. $token. '"}';
 
 } else if (isset($_SESSION['token']) && ($_POST['token'] == $_SESSION['token'])) {
+	// セッションをdestroy
+	destroy();
 
 	if (filter_var($_POST['address'], FILTER_VALIDATE_EMAIL)) {
 		$from = $_POST['address'];
 	} else {
-//		echo ;
-		destroy();
 		die('{ "success": false, "status": "不正なメールアドレスです。" }');
 	}
+
 	// 特殊文字をhtmlエンティティに変換
 	$message = htmlspecialchars($_POST['message'], ENT_QUOTES, "UTF-8");
 

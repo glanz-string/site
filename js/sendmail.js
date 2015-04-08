@@ -41,7 +41,7 @@ SendMail = Backbone.Model.extend({
 		$.ajax({
 			url: this.get('hostUrl'),
 			type: this.get('method'),
-//			dataType: this.get('dataType'),
+			dataType: this.get('dataType'),
 			data: {
 				token: this.get('token'),
 				address: this.get('address'),
