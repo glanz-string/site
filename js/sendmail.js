@@ -39,7 +39,7 @@ SendMail = Backbone.Model.extend({
 			return 0;
 		}
 		this.set("textStatus","送信中");
-		this.mailSending("mailSending",true);
+		this.set("mailSending",true);
 		$.ajax({
 			url: this.get('hostUrl'),
 			type: this.get('method'),
