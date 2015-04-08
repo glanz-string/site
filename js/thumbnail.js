@@ -27,6 +27,6 @@ React.createElement("div", {className: "thumbnail"},
 			);
 	}
 
-})
+});
 
 //  <Thumbnail src="" [largeImageSrc=""] [alt=""] [className=""] [style={}] />
