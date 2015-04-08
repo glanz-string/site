@@ -24,13 +24,13 @@ SendMail = Backbone.Model.extend({
 					tokenGotten: true
 				});
 			}).bind(this),
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
+			error: (function (XMLHttpRequest, textStatus, errorThrown) {
 				this.set({
 					token: "",
 					tokenGotten: false,
 					textStatus: textStatus
 				});
-			}
+			}).bind(this)
 		});
 	},
 
@@ -58,7 +58,7 @@ SendMail = Backbone.Model.extend({
 			}).bind(this),
 			error: (function (XMLHttpRequest, textStatus, errorThrown) {
 				console.log("failed to access to php: " + textStatus);
-				this.set("textStatus",data.status);
+				this.set("textStatus",textStatus);
 			}).bind(this)
 		});
 	},
