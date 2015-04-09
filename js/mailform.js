@@ -6,23 +6,23 @@ var MailForm = React.createClass({displayName: "MailForm",
 	},
 	render: function () {
 		var buttonDisabled = ( (this.props.model.get("mailSending")) || (!this.props.model.get("tokenGotten")) ) ? "disabled": "";
-		var reconnectButton = React.createElement("a", {href: "javascript:void(0)", onClick:  this.getToken}, "サーバーに再接続")
-		var status = this.props.model.get("status")? "status" : "status-error";
 
+		var reconnectLink = React.createElement("a", {href: "javascript:void(0)", onClick:  this.getToken}, "サーバーに再接続");
+
+		var statusBarClass = this.props.model.get("status")? "status" : "status-error";
 		var statusBar = this.props.model.get("textStatus") ?
-			(React.createElement("p", {className: status}, this.props.model.get("textStatus"), " ", React.createElement("span", {className: "ml-20px"},  this.props.model.get("tokenGotten") ? null : reconnectButton)))
+			(React.createElement("p", {className: statusBarClass}, this.props.model.get("textStatus"), " ", React.createElement("span", {className: "ml-20px"},  this.props.model.get("tokenGotten") ? null : reconnectLink)))
 			: null;
 
 
 		return (
-React.createElement("div", {className: "mailform mt-2em"}, 
+React.createElement("div", {className: "mailform mt-1em"}, 
   statusBar, 
   React.createElement("form", {onSubmit: this.onSubmit, className: "mt-1em"}, 
     React.createElement("label", null, "メールアドレス", React.createElement("br", null), React.createElement("input", {value: this.props.model.get("address"), onChange: this.setAddress})), 
     React.createElement("label", null, "本文", React.createElement("br", null), React.createElement("textarea", {value: this.props.model.get("message"), onChange: this.setMessage})), 
     React.createElement("button", {onClick: this.sendMail, disabled:  buttonDisabled }, "送信"), React.createElement("br", null)
-  ), 
-  this.props.model.get("address")
+  )
 )
 		);
 	},

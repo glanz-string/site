@@ -38,7 +38,7 @@ SendMail = Backbone.Model.extend({
 				this.set({
 					token: "",
 					tokenGotten: false,
-					textStatus: textStatus,
+					textStatus: "サーバーへのアクセスに失敗",
 					status: false
 				});
 			}).bind(this)
@@ -113,7 +113,6 @@ SendMail = Backbone.Model.extend({
 			textStatus: "",
 			status: true
 		});
-
 	}
 
 });

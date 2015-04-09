@@ -10,7 +10,7 @@ React.createElement("section", {className: "content mt-30px"},
   React.createElement("hr", null), 
   React.createElement("address", {className: "contact_us"}, 
     React.createElement("h1", null, "前売り券：1000円", React.createElement("span", {className: "ml-2em"}), "当日券：1500円"), 
-    React.createElement("p", {className: "mt-1em"}, "以下のフォームに希望枚数等をご記入の上お申込みください"), 
+    React.createElement("p", {className: "mt-1em"}, "以下のフォームに希望枚数等をご記入の上お申込みください。"), 
     React.createElement(MailForm, {model: sendmail})
   )
 ), 
