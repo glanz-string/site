@@ -9,8 +9,8 @@ SendMail = Backbone.Model.extend({
 		message: "",
 		tokenGotten: false,
 		mailSending: false,
-		textStatus: ""
-
+		textStatus: "",
+		status: true
 	},
 	getToken: function () {
 		$.ajax({
@@ -21,14 +21,17 @@ SendMail = Backbone.Model.extend({
 			success: (function (data) {
 				this.set({
 					token: data['token'],
-					tokenGotten: true
+					tokenGotten: true,
+					textStatus: "",
+					status: true
 				});
 			}).bind(this),
 			error: (function (XMLHttpRequest, textStatus, errorThrown) {
 				this.set({
 					token: "",
 					tokenGotten: false,
-					textStatus: textStatus
+					textStatus: textStatus,
+					status: false
 				});
 			}).bind(this)
 		});
@@ -40,6 +43,7 @@ SendMail = Backbone.Model.extend({
 		}
 		this.set({
 			textStatus: "送信中",
+			status: true,
 			mailSending: true
 		});
 		$.ajax({
@@ -56,13 +60,19 @@ SendMail = Backbone.Model.extend({
 
 				this.getToken();
 
+				var status;
+
 				if (data.success) {
 					this.clearMail();
+					status = true;
+				} else {
+					status = false;
 				}
 
 				this.set({
 					mailSending: false,
-					textStatus: data.status
+					textStatus: data.status,
+					status: status
 				});
 
 			}).bind(this),
@@ -71,7 +81,8 @@ SendMail = Backbone.Model.extend({
 
 				this.set({
 					mailSending: false,
-					textStatus: data.status
+					textStatus: data.status,
+					status: false
 				});
 			}).bind(this)
 		});
@@ -91,7 +102,8 @@ SendMail = Backbone.Model.extend({
 			message: "",
 			tokenGotten: false,
 			mailSending: false,
-			textStatus: ""
+			textStatus: "",
+			status: true
 		});
 
 	}

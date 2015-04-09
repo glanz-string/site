@@ -123,6 +123,11 @@ button:hover {
   -webkit-transition: 0.2s;
 }
 
+button:disabled {
+  background-color: #c49999;
+  cursor: default;
+}
+
 .xrea-ad {
   width: 468px;
   height: 60px;
@@ -407,4 +412,46 @@ button:hover {
     to{
         opacity: 1;
     }
+}
+
+/* mailform */
+
+.mailform .status {
+  background-color: rgba(0,0,255,0.3);
+  color: #000099;
+  border-radius: 0.5em;
+  padding-left: 1em;
+  width: 80%;
+}
+
+.mailform .status-error {
+  background-color: rgba(255,0,0,0.3);
+  color: #990000;
+  border-radius: 0.5em;
+  padding-left: 1em;
+  width: 80%;
+}
+
+.mailform label {
+  display: block;
+}
+.mailform input {
+  font-size: 16px;
+  border-width: 2px;
+  border-color: #621f1f;
+  border-style: solid;
+  border-radius: 0.25em;
+  line-height: 2em;
+  width: 80%;
+}
+
+.mailform textarea {
+  font-size: 16px;
+  border-width: 2px;
+  border-color: #621f1f;
+  border-style: solid;
+  border-radius: 0.25em;
+  height: 15em;
+  line-height: 1.5em;
+  width: 80%;
 }
