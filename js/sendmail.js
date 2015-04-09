@@ -89,7 +89,7 @@ SendMail = Backbone.Model.extend({
 
 				this.set({
 					mailSending: false,
-					textStatus: data.status,
+					textStatus: textStatus,
 					status: false
 				});
 			}).bind(this)
