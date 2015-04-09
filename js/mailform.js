@@ -6,8 +6,7 @@ var MailForm = React.createClass({displayName: "MailForm",
 	},
 	render: function () {
 		var buttonDisabled = ( (this.props.model.get("mailSending")) || (!this.props.model.get("tokenGotten")) ) ? "disabled": "";
-
-		var reconnectButton = React.createElement("a", {href: "javascript:void(0)", onClick:  this.props.model.getToken}, "サーバーに再接続")
+		var reconnectButton = React.createElement("a", {href: "javascript:void(0)", onClick:  this.getToken}, "サーバーに再接続")
 
 		return (
 React.createElement("div", null, 
@@ -32,5 +31,8 @@ this.props.model.get("address")
 	},
 	onSubmit: function (e) {
 		e.preventDefault();
+	},
+	getToken: function () {
+		this.props.model.getToken();
 	}
 });
