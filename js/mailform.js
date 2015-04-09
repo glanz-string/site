@@ -15,7 +15,7 @@ var MailForm = React.createClass({displayName: "MailForm",
 
 
 		return (
-React.createElement("div", {className: "mailform mt-2em ml-1em"}, 
+React.createElement("div", {className: "mailform mt-2em"}, 
   statusBar, 
   React.createElement("form", {onSubmit: this.onSubmit, className: "mt-1em"}, 
     React.createElement("label", null, "メールアドレス", React.createElement("br", null), React.createElement("input", {value: this.props.model.get("address"), onChange: this.setAddress})), 
