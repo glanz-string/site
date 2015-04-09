@@ -12,19 +12,27 @@ SendMail = Backbone.Model.extend({
 		textStatus: "",
 		status: true
 	},
-	getToken: function () {
+	getToken: function (_setStatus) {
+		setStatus = _setStatus === undefined ? true : _setStatus;
 		$.ajax({
 			url: this.get('hostUrl'),
 			type: this.get('method'),
 			dataType: this.get('dataType'),
 			data: { 'token': this.get('tokenToGetToken') },
 			success: (function (data) {
-				this.set({
-					token: data['token'],
-					tokenGotten: true,
-					textStatus: "",
-					status: true
-				});
+				if (setStatus) {
+					this.set({
+						token: data['token'],
+						tokenGotten: true,
+						textStatus: "",
+						status: true
+					});
+				} else {
+					this.set({
+						token: data['token'],
+						tokenGotten: true,
+					});
+				}
 			}).bind(this),
 			error: (function (XMLHttpRequest, textStatus, errorThrown) {
 				this.set({
@@ -58,7 +66,7 @@ SendMail = Backbone.Model.extend({
 			success: (function (data) {
 				console.log("success to access to php: " + data.status);
 
-				this.getToken();
+				this.getToken(false);
 
 				var status;
 
