@@ -9,9 +9,14 @@ var MailForm = React.createClass({displayName: "MailForm",
 		var reconnectButton = React.createElement("a", {href: "javascript:void(0)", onClick:  this.getToken}, "サーバーに再接続")
 		var status = this.props.model.get("status")? "status" : "status-error";
 
+		var statusBar = this.props.model.get("textStatus") ?
+			(React.createElement("p", {className: status}, this.props.model.get("textStatus"), " ", React.createElement("span", {className: "ml-20px"},  this.props.model.get("tokenGotten") ? null : reconnectButton)))
+			: null;
+
+
 		return (
 React.createElement("div", {className: "mailform mt-2em ml-1em"}, 
-  React.createElement("p", {className: status}, this.props.model.get("textStatus"), " ", React.createElement("span", {className: "ml-20px"},  this.props.model.get("tokenGotten") ? reconnectButton : reconnectButton)), 
+  statusBar, 
   React.createElement("form", {onSubmit: this.onSubmit, className: "mt-1em"}, 
     React.createElement("label", null, "メールアドレス", React.createElement("br", null), React.createElement("input", {value: this.props.model.get("address"), onChange: this.setAddress})), 
     React.createElement("label", null, "本文", React.createElement("br", null), React.createElement("textarea", {value: this.props.model.get("message"), onChange: this.setMessage})), 
