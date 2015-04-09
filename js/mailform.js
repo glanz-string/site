@@ -5,13 +5,17 @@ var MailForm = React.createClass({displayName: "MailForm",
 		this.props.model.getToken();
 	},
 	render: function () {
+		var buttonDisabled = ( (this.props.model.get("mailSending")) || (!this.props.model.get("tokenGotten")) ) ? "disabled": "";
+
+		var reconnectButton = React.createElement("a", {href: "javascript:void(0)", onClick:  this.props.model.getToken}, "サーバーに再接続")
+
 		return (
 React.createElement("div", null, 
-this.props.model.get("textStatus"), 
+React.createElement("p", null, this.props.model.get("textStatus"), " ", React.createElement("span", {className: "ml-20px"},  this.props.model.get("tokenGotten") ? "" : reconnectButton)), 
 React.createElement("form", {onSubmit: this.onSubmit}, 
 React.createElement("input", {value: this.props.model.get("address"), onChange: this.setAddress}), React.createElement("br", null), 
 React.createElement("textarea", {value: this.props.model.get("message"), onChange: this.setMessage}), 
-React.createElement("input", {type: "button", value: "送信", onClick: this.sendMail}), React.createElement("br", null), React.createElement("br", null)
+React.createElement("input", {type: "button", value: "送信", onClick: this.sendMail, disabled:  buttonDisabled }), React.createElement("br", null), React.createElement("br", null)
 ), 
 this.props.model.get("address")
 )
