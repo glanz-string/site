@@ -8,6 +8,7 @@ SendMail = Backbone.Model.extend({
 		address: "",
 		message: "",
 		subject: "",
+		fixSubject: false,
 		tokenGotten: false,
 		mailSending: false,
 		textStatus: "",
@@ -62,7 +63,8 @@ SendMail = Backbone.Model.extend({
 			data: {
 				token: this.get('token'),
 				address: this.get('address'),
-				message: this.get('message')
+				message: this.get('message'),
+				message: this.get('subject')
 			},
 			success: (function (data) {
 				console.log("success to access to php: " + data.status);
@@ -98,22 +100,34 @@ SendMail = Backbone.Model.extend({
 	},
 
 	clearMail: function () {
-		this.set({
-			address: "",
-			message: "",
-		});
+		if (this.get('fixSubject')) {
+			this.set({
+				address: "",
+				message: "",
+			});
+		} else {
+			this.set({
+				address: "",
+				message: "",
+				subject: "",
+			})
+		}
 	},
 
-	initAll: function () {
-		this.set({
+	initAll: function (_settings) {
+		var settings = {
 			token: "",
 			address: "",
 			message: "",
+			subject: "",
+			fixSubject: false,
 			tokenGotten: false,
 			mailSending: false,
 			textStatus: "",
 			status: true
-		});
+		};
+		_.extend(settings,_settings)
+		this.set(settings);
 	}
 
 });
