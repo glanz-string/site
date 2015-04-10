@@ -1,8 +1,10 @@
 <?php
-$OWNER_ADDRESS = "niba1122@keio.jp";
+
+$OWNER_ADDRESS = "glanz.strings@gmail.com";
 
 $TOKEN_LENGTH = 16;
 $GET_TOKEN = "GET_TOKEN";
+
 
 $CONFIRM_MESSAGE_HEADER = <<< EOM
 以下の内容でメールが送信されました。
@@ -100,6 +102,5 @@ $client_address　への確認メールの送信に失敗しました。
 EOM;
 	return $error_message;
 }
-
 
 ?>
