@@ -76,7 +76,7 @@ if ($_POST['token'] == $GET_TOKEN) {
 	// 確認メールを送信
 	$status = mb_send_mail($client_address, "メール送信完了のお知らせ", $CONFIRM_MESSAGE_HEADER. $message. $CONFIRM_MESSAGE_FOOTER, "From:". $OWNER_ADDRESS);
 	if ($status) {
-		echo '{ "success": true, "status": "メールは正常に送信されました。'. $status. '" }';
+		echo '{ "success": true, "status": "送信完了。確認メールを送信しました。" }';
 	} else {
 		echo '{ "success": false, "status": "確認メールの送信失敗。アドレスが間違っている可能性があります。" }';
 		mb_send_mail($OWNER_ADDRESS, "確認メールの送信失敗 to $client_address", error_message($client_address), "From:". $client_address);
