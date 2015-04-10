@@ -35,7 +35,7 @@ if ($_POST['token'] == $GET_TOKEN) {
 		die('{ "success": false, "status": "不正なメールアドレスです。" }');
 	}
 
-	if ( isset($_POST['message'] && ($_POST['message'] != "") ) {
+	if ( isset($_POST['message']) && ($_POST['message'] != "") ) {
 		// 特殊文字をhtmlエンティティに変換
 		$message = htmlspecialchars($_POST['message'], ENT_QUOTES, "UTF-8");
 	} else {
