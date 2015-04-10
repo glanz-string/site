@@ -7,11 +7,12 @@ $GET_TOKEN = "GET_TOKEN";
 $CONFIRM_MESSAGE_HEADER = <<< EOM
 以下の内容でメールが送信されました。
 --------------------------------------------------
+ 
 
 EOM;
 
 $CONFIRM_MESSAGE_FOOTER = <<< EOM
-
+ 
 --------------------------------------------------
 Glanz弦楽合奏団
 
@@ -72,15 +73,13 @@ if ($_POST['token'] == $GET_TOKEN) {
 	}
 
 	// 確認メールを送信
-	$status = mb_send_mail($client_address, $subject, $CONFIRM_MESSAGE_HEADER. $message. $CONFIRM_MESSAGE_FOOTER, "From:". $OWNER_ADDRESS);
+	$status = mb_send_mail($client_address, "メール送信完了のお知らせ", $CONFIRM_MESSAGE_HEADER. $message. $CONFIRM_MESSAGE_FOOTER, "From:". $OWNER_ADDRESS);
 	if ($status) {
 		echo '{ "success": true, "status": "メールは正常に送信されました。" }';
 	} else {
-		echo '{ "success": false, "status": "確認メールの送信失敗。アドレスが間違っている可能性があります。" }';	
+		echo '{ "success": false, "status": "確認メールの送信失敗。アドレスが間違っている可能性があります。" }';
+		mb_send_mail($OWNER_ADDRESS, "確認メールの送信失敗 to $client_address", error_message($client_address), "From:". $client_address);
 	}
-
-	mb_send_mail($OWNER_ADDRESS, $subject, error_message($client_address), "From:". $client_address);
-
 
 } else {
 	echo '{ "success": false, "status": "不適切なアクセスです。" }';
