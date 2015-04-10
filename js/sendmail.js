@@ -7,6 +7,7 @@ SendMail = Backbone.Model.extend({
 		token: "",
 		address: "",
 		message: "",
+		subject: "",
 		tokenGotten: false,
 		mailSending: false,
 		textStatus: "",

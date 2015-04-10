@@ -35,8 +35,18 @@ if ($_POST['token'] == $GET_TOKEN) {
 		die('{ "success": false, "status": "不正なメールアドレスです。" }');
 	}
 
-	// 特殊文字をhtmlエンティティに変換
-	$message = htmlspecialchars($_POST['message'], ENT_QUOTES, "UTF-8");
+	if ( isset($_POST['message'] && ($_POST['message'] != "") ) {
+		// 特殊文字をhtmlエンティティに変換
+		$message = htmlspecialchars($_POST['message'], ENT_QUOTES, "UTF-8");
+	} else {
+		die('{ "success": false, "status": "本文が空です。" }');
+	}
+
+	if ( isset($_POST['subject']) && ($_POST['subject'] != "") ) {
+		$subject = $_POST['subject'];
+	} else {
+		die('{ "success": false, "status": "題名が空です。" }');
+	}
 
 	// メールを送信
 	$status = mb_send_mail($to, $subject, $message, "From:".$from);
