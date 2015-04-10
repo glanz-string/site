@@ -8,11 +8,14 @@ SendMail = Backbone.Model.extend({
 		address: "",
 		message: "",
 		subject: "",
-		fixSubject: false,
 		tokenGotten: false,
 		mailSending: false,
 		textStatus: "",
-		status: true
+		status: true,
+		defaultAttributes: {}
+	},
+	initialize: function (attrs) {
+		this.set("defaultAttributes",_.omit(this.attributes, 'defaultAttributes'));
 	},
 	getToken: function (_setStatus) {
 		setStatus = _setStatus === undefined ? true : _setStatus;
@@ -100,34 +103,12 @@ SendMail = Backbone.Model.extend({
 	},
 
 	clearMail: function () {
-		if (this.get('fixSubject')) {
-			this.set({
-				address: "",
-				message: "",
-			});
-		} else {
-			this.set({
-				address: "",
-				message: "",
-				subject: "",
-			})
-		}
+		this.set( _.pick(this.get("defaultAttributes"), ['address', 'message', 'subject']) );
 	},
 
-	initAll: function (_settings) {
-		var settings = {
-			token: "",
-			address: "",
-			message: "",
-			subject: "",
-			fixSubject: false,
-			tokenGotten: false,
-			mailSending: false,
-			textStatus: "",
-			status: true
-		};
-		_.extend(settings,_settings)
-		this.set(settings);
+	reset: function () {
+		this.set(this.get("defaultAttributes"));
+		this.getToken();
 	}
 
 });

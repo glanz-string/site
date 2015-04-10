@@ -1,11 +1,7 @@
 var MailForm = React.createClass({displayName: "MailForm",
 	mixins: [Backbone.React.Component.mixin],
 	componentWillMount: function () {
-		this.props.model.initAll({
-			subject: "チケット申し込み　from glanz.s602.xrea.com",
-			fixSubject: true
-		});
-		this.props.model.getToken();
+		this.props.model.reset();
 	},
 	render: function () {
 		var buttonDisabled = ( (this.props.model.get("mailSending")) || (!this.props.model.get("tokenGotten")) ) ? "disabled": "";

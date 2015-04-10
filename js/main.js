@@ -1,6 +1,9 @@
 var sendmail = new SendMail({
-	hostUrl: "/php/sendmail.php"
+	hostUrl: "/php/sendmail.php",
+	subject: "チケット申し込み　from glanz.s602.xrea.com"
 });
+
+console.log(sendmail)
 
 React.render(
 React.createElement(Router, {root: ""}, 
