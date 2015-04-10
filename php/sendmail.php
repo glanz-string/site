@@ -1,12 +1,29 @@
 <?php
-mb_language("japanese");
-mb_internal_encoding("UTF-8");
-
-$to = "niba1122@keio.jp";
-$subject = "テストメール from glanz@s602.xrea.com";
+$OWNER_ADDRESS = "niba1122@keio.jp";
 
 $TOKEN_LENGTH = 16;
 $GET_TOKEN = "GET_TOKEN";
+
+$CONFIRM_MESSAGE_HEADER = <<< EOM
+以下の内容でメールが送信されました。
+--------------------------------------------------
+
+EOM;
+
+$CONFIRM_MESSAGE_FOOTER = <<< EOM
+
+--------------------------------------------------
+Glanz弦楽合奏団
+
+tel: 080-3180-7125(岩本)
+email: glanz.strings@gmail.com
+EOM;
+
+
+////////////////////////////////////////////////////////////////////
+
+mb_language("japanese");
+mb_internal_encoding("UTF-8");
 
 
 session_start();
@@ -30,7 +47,7 @@ if ($_POST['token'] == $GET_TOKEN) {
 	destroy();
 
 	if (filter_var($_POST['address'], FILTER_VALIDATE_EMAIL)) {
-		$from = $_POST['address'];
+		$client_address = $_POST['address'];
 	} else {
 		die('{ "success": false, "status": "不正なメールアドレスです。" }');
 	}
@@ -49,13 +66,22 @@ if ($_POST['token'] == $GET_TOKEN) {
 	}
 
 	// メールを送信
-	$status = mb_send_mail($to, $subject, $message, "From:".$from);
+	$status = mb_send_mail($OWNER_ADDRESS, $subject, $message, "From:". $client_address);
+	if (!$status) {
+		die('{ "success": false, "status": "メールの送信に失敗しました。" }');	
+	}
+
+	// 確認メールを送信
+	$status = mb_send_mail($client_address, $subject, $CONFIRM_MESSAGE_HEADER. $message. $CONFIRM_MESSAGE_FOOTER, "From:". $OWNER_ADDRESS);
 	if ($status) {
 		echo '{ "success": true, "status": "メールは正常に送信されました。" }';
 	} else {
-		echo '{ "success": false, "status": "メールの送信に失敗しました。" }';	
+		echo '{ "success": false, "status": "確認メールの送信失敗。アドレスが間違っている可能性があります。" }';	
 	}
-//	destroy();
+
+	mb_send_mail($OWNER_ADDRESS, $subject, error_message($client_address), "From:". $client_address);
+
+
 } else {
 	echo '{ "success": false, "status": "不適切なアクセスです。" }';
 	destroy();
@@ -66,6 +92,14 @@ function destroy() {
 	session_destroy();
 } 
 
+function error_message($client_address) {
+	$error_message = "";
+	$error_message .= <<< EOM
+$client_address　への確認メールの送信に失敗しました。
+メールアドレス $client_address は有効ではない可能性があります。
+EOM;
+	return $error_message;
+}
 
 
 ?>
