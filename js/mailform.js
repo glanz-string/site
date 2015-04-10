@@ -24,7 +24,8 @@ React.createElement("div", {className: "mailform mt-1em"},
     React.createElement("label", null, "メールアドレス", React.createElement("br", null), React.createElement("input", {value: this.props.model.get("address"), onChange: this.setAddress})), 
     React.createElement("label", null, "本文", React.createElement("br", null), React.createElement("textarea", {value: this.props.model.get("message"), onChange: this.setMessage})), 
     React.createElement("div", {className: "mt-1em"}, React.createElement("span", {className: "submit-button"}, React.createElement("button", {onClick: this.sendMail, disabled:  buttonDisabled }, "送信")), " ", statusBar)
-  )
+  ), 
+  this.props.model.get("subject")
 )
 		);
 	},
