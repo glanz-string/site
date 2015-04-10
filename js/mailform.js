@@ -3,6 +3,7 @@ var MailForm = React.createClass({displayName: "MailForm",
 	componentWillMount: function () {
 		this.props.model.initAll();
 		this.props.model.getToken();
+		this.props.model.set("subject", "チケット申し込み　from glanz.s602.xrea.com")
 	},
 	render: function () {
 		var buttonDisabled = ( (this.props.model.get("mailSending")) || (!this.props.model.get("tokenGotten")) ) ? "disabled": "";
