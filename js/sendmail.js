@@ -89,7 +89,7 @@ SendMail = Backbone.Model.extend({
 
 				this.set({
 					mailSending: false,
-					textStatus: textStatus,
+					textStatus: "サーバーへのアクセスに失敗。再送信してください。",
 					status: false
 				});
 			}).bind(this)

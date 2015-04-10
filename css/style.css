@@ -306,6 +306,13 @@ button:disabled {
   line-height: 1em;
 }
 
+/* tickets */
+
+.ticket-form {
+  font-size: 16px;
+}
+
+
 /* contact us */
 .contact_us {
   line-height: 2em;
@@ -417,21 +424,25 @@ button:disabled {
 /* mailform */
 
 .mailform .status {
+  display: inline-block;
   background-color: rgba(0,0,255,0.3);
   color: #000099;
   border-radius: 0.5em;
-  padding-left: 1em;
-  width: 80%;
+  padding: 0em 1em;
   font-size: 16px;
+  width: 65%;
+  box-sizing: border-box;
 }
 
 .mailform .status-error {
+  display: inline-block;
   background-color: rgba(255,0,0,0.3);
   color: #990000;
   border-radius: 0.5em;
-  padding-left: 1em;
-  width: 80%;
+  padding: 0em 1em;
   font-size: 16px;
+  width: 65%;
+  box-sizing: border-box;
 }
 
 .mailform label {
@@ -456,4 +467,9 @@ button:disabled {
   height: 15em;
   line-height: 1.5em;
   width: 80%;
+}
+
+.mailform .submit-button {
+  display: inline-block;
+  width: 15%;
 }
