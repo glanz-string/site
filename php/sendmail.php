@@ -1,6 +1,7 @@
 <?php
 
-$OWNER_ADDRESS = "glanz.strings@gmail.com";
+// $OWNER_ADDRESS = "glanz.strings@gmail.com";
+$OWNER_ADDRESS = "niba1122@keio.jp";
 
 $TOKEN_LENGTH = 16;
 $GET_TOKEN = "GET_TOKEN";
@@ -70,13 +71,13 @@ if ($_POST['token'] == $GET_TOKEN) {
 	}
 
 	// メールを送信
-	$status = mb_send_mail($OWNER_ADDRESS, $subject, $message, "From:". $client_address);
+	$status = mb_send_mail($OWNER_ADDRESS, $subject, $message, "From:". $client_address, );
 	if (!$status) {
 		die('{ "success": false, "status": "メールの送信に失敗しました。" }');	
 	}
 
 	// 確認メールを送信
-	$status = mb_send_mail($client_address, "メール送信完了のお知らせ", $CONFIRM_MESSAGE_HEADER. $message. $CONFIRM_MESSAGE_FOOTER, "From:". $OWNER_ADDRESS);
+	$status = mb_send_mail($client_address, "メール送信完了のお知らせ", $CONFIRM_MESSAGE_HEADER. $message. $CONFIRM_MESSAGE_FOOTER, "From:". $OWNER_ADDRESS, "-f ". $OWNER_ADDRESS);
 	if ($status) {
 		echo '{ "success": true, "status": "送信完了。確認メールを送信しました。" }';
 	} else {
