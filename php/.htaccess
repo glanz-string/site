@@ -1,1 +1,0 @@
-php_value mail.log /virtual/glanz/public_html/php/sendmail.log

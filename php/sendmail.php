@@ -1,7 +1,7 @@
 <?php
 
-// $OWNER_ADDRESS = "glanz.strings@gmail.com";
-$OWNER_ADDRESS = "niba1122@keio.jp";
+$OWNER_ADDRESS = "glanz.strings@gmail.com";
+// $OWNER_ADDRESS = "niba1122@keio.jp";
 
 $TOKEN_LENGTH = 16;
 $GET_TOKEN = "GET_TOKEN";
