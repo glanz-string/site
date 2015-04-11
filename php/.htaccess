@@ -1,0 +1,1 @@
+php_value mail.log "./mail_log"
