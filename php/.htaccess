@@ -1,1 +1,1 @@
-php_value mail.log "/virtual/glanz/public_html/php/mail_log"
+php_value mail.log /virtual/glanz/public_html/php/mail_log
