@@ -16,7 +16,7 @@ React.createElement("section", {className: "content mt-30px"},
 "チケット代は演奏会当日受付でお支払いください。"
       ), 
       React.createElement(MailForm, {model: ticketMail}), 
-"※確認メールの送信には時間が掛かる場合がございます。"
+React.createElement("p", {className: "mt-1em"}, "※送信後の確認メールの送信には時間が掛かる場合がございます。")
     )
   )
 ), 
