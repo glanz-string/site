@@ -71,7 +71,7 @@ if ($_POST['token'] == $GET_TOKEN) {
 	}
 
 	// メールを送信
-	$status = mb_send_mail($OWNER_ADDRESS, $subject, $message, "From:". $client_address, );
+	$status = mb_send_mail($OWNER_ADDRESS, $subject, $message, "From:". $client_address);
 	if (!$status) {
 		die('{ "success": false, "status": "メールの送信に失敗しました。" }');	
 	}
