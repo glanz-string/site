@@ -3,8 +3,6 @@ var Concerts = React.createClass({
     Backbone.history.navigate("tickets",true);
   },
 	render: function () {
-    console.log(this.props.params)
-		console.log("concerts rendered");
 		return(
 <div className="body-wrap">
 <Header />

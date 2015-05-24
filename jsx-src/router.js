@@ -2,7 +2,8 @@ var Router = React.createClass({
 	getInitialState: function () {
 		return {
 			current: {
-				className: null,
+//				className: null,
+				class: null,
 				params: null,
 				attrs: null
 			}
@@ -16,35 +17,37 @@ var Router = React.createClass({
 	componentWillMount: function () {
 		var routerProps = { routes: {} };
 		React.Children.forEach(this.props.children, (function (child,i) {
-			var funcName = "f" + i;
-
-
-			var routes = {};
-			routes[child.props.path] = funcName;
-			_.extend(routerProps.routes,routes);
-
-			var routerFunc = {};
-			routerFunc[funcName] = (function () {
-				var params = arguments;
-				this.setState((function (state,props) {
-					// this = child
-					state.current.attrs = {};
-					_.extend(state.current.attrs, this.props);
-
-					state.current.className = this.props.reactClass;
-					if (arguments) {
-						state.current.params = Array.prototype.slice.call(params);
-						_.extend(state.current.attrs, {params: params});
-					} else {
-						state.current.params = null;
-					}
-
-					_.extend(state.current.attrs, {router: props.router.instance});
-
-				}).bind(child));
-			}).bind(this);
-
-			_.extend(routerProps,routerFunc);
+      if(child.type.displayName == "Content") {
+  			var funcName = "f" + i;
+  
+  			var routes = {};
+  			routes[child.props.path] = funcName;
+  			_.extend(routerProps.routes,routes);
+  
+  			var routerFunc = {};
+  			routerFunc[funcName] = (function () {
+  				var params = arguments;
+  				this.setState((function (state,props) {
+  					// this = child
+  					state.current.attrs = {};
+  					_.extend(state.current.attrs, this.props);
+  
+  //					state.current.className = this.props.reactClass;
+  					state.current.class = this.props.reactClass;
+  					if (params) {
+  						state.current.params = Array.prototype.slice.call(params);
+  						_.extend(state.current.attrs, {params: params});
+  					} else {
+  						state.current.params = null;
+  					}
+  
+  					_.extend(state.current.attrs, {router: props.router.instance});
+  
+  				}).bind(child));
+  			}).bind(this);
+  
+  			_.extend(routerProps,routerFunc);
+      }
 		}).bind(this));
 
 		var routerClass = Backbone.Router.extend(routerProps);
@@ -64,11 +67,13 @@ var Router = React.createClass({
 		Backbone.history.start(historyOptions);
 	},
 	render: function () {
-		var global = new Function("return this")();
-		if (this.state.current.className == null) {
+//		var global = new Function("return this")();
+//		if (this.state.current.className == null) {
+		if (this.state.current.class == null) {
 			return (<div></div>);
 		} else {
-			return React.createElement(global[this.state.current.className], this.state.current.attrs);
+//			return React.createElement(global[this.state.current.className], this.state.current.attrs);
+			return React.createElement(this.state.current.class, this.state.current.attrs);
 		}
 	},
 });
