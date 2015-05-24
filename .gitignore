@@ -3,3 +3,5 @@
 /test/
 /server.py
 .DS_store
+*.swp
+*.swo
