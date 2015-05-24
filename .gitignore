@@ -2,3 +2,4 @@
 /laravel/
 /test/
 /server.py
+.DS_store
