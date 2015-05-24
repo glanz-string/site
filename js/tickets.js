@@ -1,5 +1,7 @@
 Tickets = React.createClass({displayName: "Tickets",
 	render: function () {
+    // スクロール位置を一番上に戻す
+    window.scrollTo(0,0);
 		return (
 React.createElement("div", {className: "body-wrap"}, 
 React.createElement(Header, null), 
