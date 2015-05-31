@@ -74,7 +74,7 @@ var Router = React.createClass({displayName: "Router",
 //			return React.createElement(global[this.state.current.reactClassName], this.state.current.attrs);
 			return React.createElement(this.state.current.reactClass, this.state.current.attrs);
 		}
-	},
+	}
 });
 
 var Content = React.createClass({displayName: "Content",
