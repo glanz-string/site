@@ -35,7 +35,7 @@ SendMail = Backbone.Model.extend({
 				} else {
 					this.set({
 						token: data['token'],
-						tokenGotten: true,
+						tokenGotten: true
 					});
 				}
 			}).bind(this),
