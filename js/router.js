@@ -2,8 +2,7 @@ var Router = React.createClass({displayName: "Router",
 	getInitialState: function () {
 		return {
 			current: {
-//				className: null,
-				class: null,
+				reactClass: null,
 				params: null,
 				attrs: null
 			}
@@ -32,8 +31,8 @@ var Router = React.createClass({displayName: "Router",
   					state.current.attrs = {};
   					_.extend(state.current.attrs, this.props);
   
-  //					state.current.className = this.props.reactClass;
-  					state.current.class = this.props.reactClass;
+  //					state.current.reactClassName = this.props.reactClass;
+  					state.current.reactClass = this.props.reactClass;
   					if (params) {
   						state.current.params = Array.prototype.slice.call(params);
   						_.extend(state.current.attrs, {params: params});
@@ -68,12 +67,12 @@ var Router = React.createClass({displayName: "Router",
 	},
 	render: function () {
 //		var global = new Function("return this")();
-//		if (this.state.current.className == null) {
-		if (this.state.current.class == null) {
+//		if (this.state.current.reactClassName == null) {
+		if (this.state.current.reactClass == null) {
 			return (React.createElement("div", null));
 		} else {
-//			return React.createElement(global[this.state.current.className], this.state.current.attrs);
-			return React.createElement(this.state.current.class, this.state.current.attrs);
+//			return React.createElement(global[this.state.current.reactClassName], this.state.current.attrs);
+			return React.createElement(this.state.current.reactClass, this.state.current.attrs);
 		}
 	},
 });
