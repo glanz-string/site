@@ -33,8 +33,8 @@ Ad = React.createClass({
 
 		return (
 <section className="xrea-ad mt-20px">
-<iframe scrolling="no" src="http://img.xrea.com/ad_iframe.fcg?site=glanz.s602.xrea.com">
-</iframe>
+<script type="text/javascript" src="http://imgj.xrea.com/xa.j?site=glanz.s602.xrea.com"></script>
+<noscript><iframe height="60" width="468" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" allowtransparency="true" src="http://img.xrea.com/ad_iframe.fcg?site=glanz.s602.xrea.com"><a href="http://img.xrea.com/ad_click.fcg?site=glanz.s602.xrea.com" target="_blank"><img src="http://img.xrea.com/ad_img.fcg?site=glanz.s602.xrea.com" border="0" alt="xreaad"></a></iframe></noscript>
 </section>
 		);
 	}
