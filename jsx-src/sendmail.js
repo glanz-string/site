@@ -1,4 +1,4 @@
-SendMail = Backbone.Model.extend({
+var SendMail = Backbone.Model.extend({
 	defaults: {
 		hostUrl: "",
 		tokenToGetToken: "GET_TOKEN",

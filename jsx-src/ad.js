@@ -1,4 +1,4 @@
-Ad = React.createClass({
+var Ad = React.createClass({
 	getInitialState: function () {
 		return {
 			adHtml: ''

@@ -1,4 +1,4 @@
-Test = React.createClass({
+var Test = React.createClass({
 	render: function () {
 		return (
 <div className="body-wrap">

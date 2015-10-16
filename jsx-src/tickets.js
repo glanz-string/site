@@ -1,4 +1,4 @@
-Tickets = React.createClass({
+var Tickets = React.createClass({
 	render: function () {
     // スクロール位置を一番上に戻す
     window.scrollTo(0,0);

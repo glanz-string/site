@@ -53,7 +53,7 @@ var Router = React.createClass({
 		var routerClass = Backbone.Router.extend(routerProps);
 		this.props.router.instance = new routerClass;
 
-		historyOptions = {};
+		var historyOptions = {};
 		if (this.props.pushState) {
 			_.extend(historyOptions, {pushState: this.props.pushState});
 		}

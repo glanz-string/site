@@ -1,4 +1,4 @@
-ContactUs = React.createClass({
+var ContactUs = React.createClass({
 	render: function () {
 		return (
 <div className="body-wrap">

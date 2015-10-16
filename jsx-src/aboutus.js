@@ -1,4 +1,4 @@
-AboutUs = React.createClass({
+var AboutUs = React.createClass({
 	render: function () {
 		return (
 <div className="body-wrap">
