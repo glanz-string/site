@@ -1,92 +1,104 @@
-var Router = React.createClass({displayName: "Router",
-	getInitialState: function () {
+"use strict";
+
+var Router = React.createClass({
+	displayName: "Router",
+
+	getInitialState: function getInitialState() {
 		return {
 			current: {
-				reactClass: null,
+				//				className: null,
+				"class": null,
 				params: null,
 				attrs: null
 			}
 		};
 	},
-	getDefaultProps: function() {
+	getDefaultProps: function getDefaultProps() {
 		return {
 			router: { instance: null }
 		};
 	},
-	componentWillMount: function () {
+	componentWillMount: function componentWillMount() {
 		var routerProps = { routes: {} };
-		React.Children.forEach(this.props.children, (function (child,i) {
-      if(child.type.displayName == "Content") {
-  			var funcName = "f" + i;
-  
-  			var routes = {};
-  			routes[child.props.path] = funcName;
-  			_.extend(routerProps.routes,routes);
-  
-  			var routerFunc = {};
-  			routerFunc[funcName] = (function () {
-  				var params = arguments;
-  				this.setState((function (state,props) {
-  					// this = child
-  					state.current.attrs = {};
-  					_.extend(state.current.attrs, this.props);
-  
-  //					state.current.reactClassName = this.props.reactClass;
-  					state.current.reactClass = this.props.reactClass;
-  					if (params) {
-  						state.current.params = Array.prototype.slice.call(params);
-  						_.extend(state.current.attrs, {params: params});
-  					} else {
-  						state.current.params = null;
-  					}
-  
-  					_.extend(state.current.attrs, {router: props.router.instance});
-  
-  				}).bind(child));
-  			}).bind(this);
-  
-  			_.extend(routerProps,routerFunc);
-      }
+		React.Children.forEach(this.props.children, (function (child, i) {
+			if (child.type.displayName == "Content") {
+				var funcName = "f" + i;
+
+				var routes = {};
+				routes[child.props.path] = funcName;
+				_.extend(routerProps.routes, routes);
+
+				var routerFunc = {};
+				routerFunc[funcName] = (function () {
+					var params = arguments;
+					this.setState((function (state, props) {
+						// this = child
+						state.current.attrs = {};
+						_.extend(state.current.attrs, this.props);
+
+						//					state.current.className = this.props.reactClass;
+						state.current["class"] = this.props.reactClass;
+						if (params) {
+							state.current.params = Array.prototype.slice.call(params);
+							_.extend(state.current.attrs, { params: params });
+						} else {
+							state.current.params = null;
+						}
+
+						_.extend(state.current.attrs, { router: props.router.instance });
+					}).bind(child));
+				}).bind(this);
+
+				_.extend(routerProps, routerFunc);
+			}
 		}).bind(this));
 
 		var routerClass = Backbone.Router.extend(routerProps);
-		this.props.router.instance = new routerClass;
+		this.props.router.instance = new routerClass();
 
 		historyOptions = {};
 		if (this.props.pushState) {
-			_.extend(historyOptions, {pushState: this.props.pushState});
+			_.extend(historyOptions, { pushState: this.props.pushState });
 		}
 		if (this.props.hashChange) {
-			_.extend(historyOptions, {hashChange: this.props.hashChange});
+			_.extend(historyOptions, { hashChange: this.props.hashChange });
 		}
 		if (this.props.root) {
-			_.extend(historyOptions, {root: this.props.root});
+			_.extend(historyOptions, { root: this.props.root });
 		}
 
 		Backbone.history.start(historyOptions);
 	},
-	render: function () {
-//		var global = new Function("return this")();
-//		if (this.state.current.reactClassName == null) {
-		if (this.state.current.reactClass == null) {
-			return (React.createElement("div", null));
+	render: function render() {
+		//		var global = new Function("return this")();
+		//		if (this.state.current.className == null) {
+		if (this.state.current["class"] == null) {
+			return React.createElement("div", null);
 		} else {
-//			return React.createElement(global[this.state.current.reactClassName], this.state.current.attrs);
-			return React.createElement(this.state.current.reactClass, this.state.current.attrs);
+			//			return React.createElement(global[this.state.current.className], this.state.current.attrs);
+			return React.createElement(this.state.current["class"], this.state.current.attrs);
 		}
 	}
 });
 
-var Content = React.createClass({displayName: "Content",
-	render: (React.createElement("div", null))
+var Content = React.createClass({
+	displayName: "Content",
+
+	render: React.createElement("div", null)
 });
 
-var A = React.createClass({displayName: "A",
-	onClick: function () {
-		Backbone.history.navigate(this.props.href,true);
+var A = React.createClass({
+	displayName: "A",
+
+	onClick: function onClick() {
+		Backbone.history.navigate(this.props.href, true);
 	},
-	render: function () {
-		return (React.createElement("a", {href: "javascript:void(0)", onClick: this.onClick}, this.props.children))
+	render: function render() {
+		return React.createElement(
+			"a",
+			{ href: "javascript:void(0)", onClick: this.onClick },
+			this.props.children
+		);
 	}
 });
 

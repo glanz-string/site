@@ -1,9 +1,11 @@
+"use strict";
+
 SendMail = Backbone.Model.extend({
 	defaults: {
 		hostUrl: "",
 		tokenToGetToken: "GET_TOKEN",
-		dataType: 'json',
-		method: 'POST',
+		dataType: "json",
+		method: "POST",
 		token: "",
 		address: "",
 		message: "",
@@ -14,27 +16,27 @@ SendMail = Backbone.Model.extend({
 		status: true,
 		defaultAttributes: {}
 	},
-	initialize: function (attrs) {
-		this.set("defaultAttributes",_.omit(this.attributes, 'defaultAttributes'));
+	initialize: function initialize(attrs) {
+		this.set("defaultAttributes", _.omit(this.attributes, "defaultAttributes"));
 	},
-	getToken: function (_setStatus) {
+	getToken: function getToken(_setStatus) {
 		setStatus = _setStatus === undefined ? true : _setStatus;
 		$.ajax({
-			url: this.get('hostUrl'),
-			type: this.get('method'),
-			dataType: this.get('dataType'),
-			data: { 'token': this.get('tokenToGetToken') },
+			url: this.get("hostUrl"),
+			type: this.get("method"),
+			dataType: this.get("dataType"),
+			data: { "token": this.get("tokenToGetToken") },
 			success: (function (data) {
 				if (setStatus) {
 					this.set({
-						token: data['token'],
+						token: data["token"],
 						tokenGotten: true,
 						textStatus: "",
 						status: true
 					});
 				} else {
 					this.set({
-						token: data['token'],
+						token: data["token"],
 						tokenGotten: true
 					});
 				}
@@ -50,7 +52,7 @@ SendMail = Backbone.Model.extend({
 		});
 	},
 
-	sendMail: function () {
+	sendMail: function sendMail() {
 		if (!this.get("tokenGotten")) {
 			return 0;
 		}
@@ -60,14 +62,14 @@ SendMail = Backbone.Model.extend({
 			mailSending: true
 		});
 		$.ajax({
-			url: this.get('hostUrl'),
-			type: this.get('method'),
-			dataType: this.get('dataType'),
+			url: this.get("hostUrl"),
+			type: this.get("method"),
+			dataType: this.get("dataType"),
 			data: {
-				token: this.get('token'),
-				address: this.get('address'),
-				message: this.get('message'),
-				subject: this.get('subject')
+				token: this.get("token"),
+				address: this.get("address"),
+				message: this.get("message"),
+				subject: this.get("subject")
 			},
 			success: (function (data) {
 				console.log("success to access to php: " + data.status);
@@ -88,7 +90,6 @@ SendMail = Backbone.Model.extend({
 					textStatus: data.status,
 					status: status
 				});
-
 			}).bind(this),
 			error: (function (XMLHttpRequest, textStatus, errorThrown) {
 				console.log("failed to access to php: " + textStatus);
@@ -102,11 +103,11 @@ SendMail = Backbone.Model.extend({
 		});
 	},
 
-	clearMail: function () {
-		this.set( _.pick(this.get("defaultAttributes"), ['address', 'message', 'subject']) );
+	clearMail: function clearMail() {
+		this.set(_.pick(this.get("defaultAttributes"), ["address", "message", "subject"]));
 	},
 
-	reset: function () {
+	reset: function reset() {
 		this.set(this.get("defaultAttributes"));
 		this.getToken();
 	}
