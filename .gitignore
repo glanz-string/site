@@ -3,5 +3,6 @@
 /test/
 /server.py
 .DS_store
+/node_modules/
 *.swp
 *.swo

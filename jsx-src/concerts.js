@@ -13,10 +13,35 @@ var Concerts = React.createClass({
   <hr />
   <article className="concert mt-10px">
     <div className="column2-left">
+      <p className="title mt-10px">第3回演奏会<br />
+      メンバーによるプロデュースシリーズVol.2
+      〜キミと歩く彼(か)の街へ〜</p>
+      <p className="info mt-20px">2016年5月28日(土)　17:30開場　18:00開演<br />
+神奈川公会堂<br />
+<br />
+モーツァルト/アイネ・クライネ・ナハトムジークより第1楽章<br />
+レスピーギ/<br />リュートの為の古風な舞曲とアリア第3組曲より第1曲イタリアーナ<br />
+チャイコフスキー/弦楽セレナーデより第2楽章<br />
+バルトーク/ルーマニア民族舞曲<br />
+ドヴォルザーク/弦楽セレナーデ<br />
+<br />
+その他<br />
+このコンサートは、ヤマハ音楽支援制度 地域音楽活動支援対象コンサートです。
+      </p>
+      <button className="mt-2em ml-10px" onClick={this.onClick}>チケットはこちら</button>
+    </div>
+    <div className="column2-right images">
+      <Thumbnail src="/images/concerts/1_1small.jpg" largeImageSrc="/images/concerts/1_1.jpg" alt="パンフレット" />
+    </div>
+  </article>
+  <hr />
+  <article className="concert mt-10px">
+    <div className="column2-left">
       <p className="title mt-10px">第2回演奏会<br />
 メンバーによるプロデュースシリーズ Vol.1<br />
 君塚氏、愛を語る！　～弦楽が奏でる愛の物語
       </p>
+      <span className="past ml-40px">終了</span>
       <p className="info mt-20px">2015年5月30日(土)　17:30開場　18:00開演<br />
 横浜市神奈川区民文化センター　かなっくホール<br />
 <br />
@@ -28,7 +53,6 @@ var Concerts = React.createClass({
 ベートーヴェン「交響曲第二番」<br />
 ※全て弦楽合奏版
       </p>
-      <button className="mt-2em ml-10px" onClick={this.onClick}>チケットはこちら</button>
     </div>
     <div className="column2-right images">
       <Thumbnail src="/images/concerts/2_1small.jpg" largeImageSrc="/images/concerts/2_1.jpg" alt="パンフレット(表)" />
