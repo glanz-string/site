@@ -31,7 +31,8 @@ var Concerts = React.createClass({
       <button className="mt-2em ml-10px" onClick={this.onClick}>チケットはこちら</button>
     </div>
     <div className="column2-right images">
-      <Thumbnail src="/images/concerts/1_1small.jpg" largeImageSrc="/images/concerts/1_1.jpg" alt="パンフレット" />
+      <Thumbnail src="/images/concerts/3_1small.jpg" largeImageSrc="/images/concerts/3_1.jpg" alt="パンフレット" />
+      <Thumbnail src="/images/concerts/3_2small.jpg" largeImageSrc="/images/concerts/3_2.jpg" alt="パンフレット" />
     </div>
   </article>
   <hr />
