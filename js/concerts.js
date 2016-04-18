@@ -1,6 +1,19 @@
 var Concerts = React.createClass({displayName: "Concerts",
+  mixins: [Backbone.React.Component.mixin],
+  getInitialState: function () {
+    return {concerts: []};
+  },
   onClick: function () {
     Backbone.history.navigate("tickets",true);
+  },
+  componentWillMount: function () {
+    concerts.fetch({
+      success: function (collection) {
+        this.setState(function (state,props) {
+          state.concerts = collection;
+        });
+      }.bind(this)
+    });
   },
 	render: function () {
 		return(
@@ -8,76 +21,41 @@ React.createElement("div", {className: "body-wrap"},
 React.createElement(Header, null), 
 React.createElement(Ad, null), 
 React.createElement("section", {className: "content mt-30px"}, 
-
   React.createElement("h1", null, React.createElement("img", {src: "images/concerts.png"})), 
   React.createElement("hr", null), 
-  React.createElement("article", {className: "concert mt-10px"}, 
-    React.createElement("div", {className: "column2-left"}, 
-      React.createElement("p", {className: "title mt-10px"}, "第3回演奏会", React.createElement("br", null), 
-      "メンバーによるプロデュースシリーズVol.2" + ' ' +
-      "〜キミと歩く彼(か)の街へ〜"), 
-      React.createElement("p", {className: "info mt-20px"}, "2016年5月28日(土)　17:30開場　18:00開演", React.createElement("br", null), 
-"神奈川公会堂", React.createElement("br", null), 
-React.createElement("br", null), 
-"モーツァルト/アイネ・クライネ・ナハトムジークより第1楽章", React.createElement("br", null), 
-"レスピーギ/", React.createElement("br", null), "リュートの為の古風な舞曲とアリア第3組曲より第1曲イタリアーナ", React.createElement("br", null), 
-"チャイコフスキー/弦楽セレナーデより第2楽章", React.createElement("br", null), 
-"バルトーク/ルーマニア民族舞曲", React.createElement("br", null), 
-"ドヴォルザーク/弦楽セレナーデ", React.createElement("br", null), 
-React.createElement("br", null), 
-"その他", React.createElement("br", null), 
-"このコンサートは、ヤマハ音楽支援制度 地域音楽活動支援対象コンサートです。"
-      ), 
-      React.createElement("button", {className: "mt-2em ml-10px", onClick: this.onClick}, "チケットはこちら")
-    ), 
-    React.createElement("div", {className: "column2-right images"}, 
-      React.createElement(Thumbnail, {src: "/images/concerts/3_1small.jpg", largeImageSrc: "/images/concerts/3_1.jpg", alt: "パンフレット"}), 
-      React.createElement(Thumbnail, {src: "/images/concerts/3_2small.jpg", largeImageSrc: "/images/concerts/3_2.jpg", alt: "パンフレット"})
-    )
-  ), 
-  React.createElement("hr", null), 
-  React.createElement("article", {className: "concert mt-10px"}, 
-    React.createElement("div", {className: "column2-left"}, 
-      React.createElement("p", {className: "title mt-10px"}, "第2回演奏会", React.createElement("br", null), 
-"メンバーによるプロデュースシリーズ Vol.1", React.createElement("br", null), 
-"君塚氏、愛を語る！　～弦楽が奏でる愛の物語"
-      ), 
-      React.createElement("span", {className: "past ml-40px"}, "終了"), 
-      React.createElement("p", {className: "info mt-20px"}, "2015年5月30日(土)　17:30開場　18:00開演", React.createElement("br", null), 
-"横浜市神奈川区民文化センター　かなっくホール", React.createElement("br", null), 
-React.createElement("br", null), 
-"モーツァルト/歌劇「フィガロの結婚」序曲", React.createElement("br", null), 
-"チャイコフスキー/「眠りの森の美女」よりワルツ", React.createElement("br", null), 
-"クライスラー/「愛の喜び」", React.createElement("br", null), 
-"シベリウス/「ロマンス」", React.createElement("br", null), 
-"スーク「弦楽セレナーデより第一楽章」", React.createElement("br", null), 
-"ベートーヴェン「交響曲第二番」", React.createElement("br", null), 
-"※全て弦楽合奏版"
+   this.state.concerts.length > 0 ? this.state.concerts.map(function (concert) {
+    var date = new Date(concert.attributes['date']);
+    var now = new Date();
+    return (
+      React.createElement("div", null, 
+        React.createElement("article", {className: "concert mt-10px"}, 
+          React.createElement("div", {className: "column2-left"}, 
+            React.createElement("p", {className: "title mt-10px"},  concert.attributes['post_title'],  now.getTime() < date.getTime() ? '' : React.createElement("span", {className: "past ml-40px"}, "終了")), 
+            React.createElement("p", {className: "info mt-20px"}, 
+             date.getFullYear(), "年",  date.getMonth()+1, "月",  date.getDate(), "日　", concert.attributes['opening_time'], "開場　",  concert.attributes['start_time'], "開演", React.createElement("br", null), 
+             concert.attributes['place'], React.createElement("br", null), 
+            React.createElement("br", null), 
+            React.createElement("span", {dangerouslySetInnerHTML: { __html: concert.attributes['post_content'].replace(/\n/g,'<br />')}})
+            ), 
+             now.getTime() < date.getTime() ? React.createElement("button", {className: "mt-2em ml-10px", onClick: this.onClick}, "チケットはこちら") : ''
+            
+          ), 
+          React.createElement("div", {className: "column2-right images"}, 
+             (concert.attributes['image1']) ?
+              React.createElement(Thumbnail, {src:  concert.attributes['image1'], largeImageSrc:  concert.attributes['image1'], alt: "パンフレット"})
+            : '', 
+             (concert.attributes['image2']) ?
+              React.createElement(Thumbnail, {src:  concert.attributes['image2'], largeImageSrc:  concert.attributes['image2'], alt: "パンフレット"})
+            : ''
+          )
+        ), 
+        React.createElement("hr", null)
       )
-    ), 
-    React.createElement("div", {className: "column2-right images"}, 
-      React.createElement(Thumbnail, {src: "/images/concerts/2_1small.jpg", largeImageSrc: "/images/concerts/2_1.jpg", alt: "パンフレット(表)"}), 
-      React.createElement(Thumbnail, {src: "/images/concerts/2_2small.jpg", largeImageSrc: "/images/concerts/2_2.jpg", alt: "パンフレット(裏)"})
     )
-  ), 
-  React.createElement("hr", null), 
-  React.createElement("article", {className: "concert mt-10px"}, 
-    React.createElement("div", {className: "column2-left"}, 
-      React.createElement("p", {className: "title mt-10px"}, "第1回演奏会", 
-      React.createElement("span", {className: "past ml-40px"}, "終了")), 
-      React.createElement("p", {className: "info mt-20px"}, "2014年5月31日(土)　17:30開場　18:00開演", React.createElement("br", null), 
-"横浜市緑区民文化センター", React.createElement("br", null), 
-React.createElement("br", null), 
-"モーツァルト/交響曲第41番”ジュピター”", React.createElement("br", null), 
-"ハイドン/弦楽四重奏曲第1番 op.1-1", React.createElement("br", null), 
-"カリンニコフ/セレナーデ", React.createElement("br", null), 
-"チャイコフスキー/フィレンツェの想い出", React.createElement("br", null)
-      )
-    ), 
-    React.createElement("div", {className: "column2-right images"}, 
-      React.createElement(Thumbnail, {src: "/images/concerts/1_1small.jpg", largeImageSrc: "/images/concerts/1_1.jpg", alt: "パンフレット"})
-    )
-  )
+  }.bind(this)) : 
+    React.createElement("div", {className: "loading"})
+  
+
 ), 
 React.createElement(Footer, null)
 )

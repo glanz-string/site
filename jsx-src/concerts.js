@@ -1,6 +1,19 @@
 var Concerts = React.createClass({
+  mixins: [Backbone.React.Component.mixin],
+  getInitialState: function () {
+    return {concerts: []};
+  },
   onClick: function () {
     Backbone.history.navigate("tickets",true);
+  },
+  componentWillMount: function () {
+    concerts.fetch({
+      success: function (collection) {
+        this.setState(function (state,props) {
+          state.concerts = collection;
+        });
+      }.bind(this)
+    });
   },
 	render: function () {
 		return(
@@ -8,76 +21,41 @@ var Concerts = React.createClass({
 <Header />
 <Ad />
 <section className="content mt-30px">
-
   <h1><img src="images/concerts.png" /></h1>
   <hr />
-  <article className="concert mt-10px">
-    <div className="column2-left">
-      <p className="title mt-10px">第3回演奏会<br />
-      メンバーによるプロデュースシリーズVol.2
-      〜キミと歩く彼(か)の街へ〜</p>
-      <p className="info mt-20px">2016年5月28日(土)　17:30開場　18:00開演<br />
-神奈川公会堂<br />
-<br />
-モーツァルト/アイネ・クライネ・ナハトムジークより第1楽章<br />
-レスピーギ/<br />リュートの為の古風な舞曲とアリア第3組曲より第1曲イタリアーナ<br />
-チャイコフスキー/弦楽セレナーデより第2楽章<br />
-バルトーク/ルーマニア民族舞曲<br />
-ドヴォルザーク/弦楽セレナーデ<br />
-<br />
-その他<br />
-このコンサートは、ヤマハ音楽支援制度 地域音楽活動支援対象コンサートです。
-      </p>
-      <button className="mt-2em ml-10px" onClick={this.onClick}>チケットはこちら</button>
-    </div>
-    <div className="column2-right images">
-      <Thumbnail src="/images/concerts/3_1small.jpg" largeImageSrc="/images/concerts/3_1.jpg" alt="パンフレット" />
-      <Thumbnail src="/images/concerts/3_2small.jpg" largeImageSrc="/images/concerts/3_2.jpg" alt="パンフレット" />
-    </div>
-  </article>
-  <hr />
-  <article className="concert mt-10px">
-    <div className="column2-left">
-      <p className="title mt-10px">第2回演奏会<br />
-メンバーによるプロデュースシリーズ Vol.1<br />
-君塚氏、愛を語る！　～弦楽が奏でる愛の物語
-      </p>
-      <span className="past ml-40px">終了</span>
-      <p className="info mt-20px">2015年5月30日(土)　17:30開場　18:00開演<br />
-横浜市神奈川区民文化センター　かなっくホール<br />
-<br />
-モーツァルト/歌劇「フィガロの結婚」序曲<br />
-チャイコフスキー/「眠りの森の美女」よりワルツ<br />
-クライスラー/「愛の喜び」<br />
-シベリウス/「ロマンス」<br />
-スーク「弦楽セレナーデより第一楽章」<br />
-ベートーヴェン「交響曲第二番」<br />
-※全て弦楽合奏版
-      </p>
-    </div>
-    <div className="column2-right images">
-      <Thumbnail src="/images/concerts/2_1small.jpg" largeImageSrc="/images/concerts/2_1.jpg" alt="パンフレット(表)" />
-      <Thumbnail src="/images/concerts/2_2small.jpg" largeImageSrc="/images/concerts/2_2.jpg" alt="パンフレット(裏)" />
-    </div>
-  </article>
-  <hr />
-  <article className="concert mt-10px">
-    <div className="column2-left">
-      <p className="title mt-10px">第1回演奏会
-      <span className="past ml-40px">終了</span></p>
-      <p className="info mt-20px">2014年5月31日(土)　17:30開場　18:00開演<br />
-横浜市緑区民文化センター<br />
-<br />
-モーツァルト/交響曲第41番”ジュピター”<br />
-ハイドン/弦楽四重奏曲第1番 op.1-1<br />
-カリンニコフ/セレナーデ<br />
-チャイコフスキー/フィレンツェの想い出<br />
-      </p>
-    </div>
-    <div className="column2-right images">
-      <Thumbnail src="/images/concerts/1_1small.jpg" largeImageSrc="/images/concerts/1_1.jpg" alt="パンフレット" />
-    </div>
-  </article>
+  { this.state.concerts.length > 0 ? this.state.concerts.map(function (concert) {
+    var date = new Date(concert.attributes['date']);
+    var now = new Date();
+    return (
+      <div>
+        <article className="concert mt-10px">
+          <div className="column2-left">
+            <p className="title mt-10px">{ concert.attributes['post_title'] }{ now.getTime() < date.getTime() ? '' : <span className='past ml-40px'>終了</span> }</p>
+            <p className="info mt-20px">
+            { date.getFullYear() }年{ date.getMonth()+1 }月{ date.getDate()}日　{concert.attributes['opening_time'] }開場　{ concert.attributes['start_time'] }開演<br />
+            { concert.attributes['place'] }<br />
+            <br />
+            <span dangerouslySetInnerHTML={{ __html: concert.attributes['post_content'].replace(/\n/g,'<br />') }} />
+            </p>
+            { now.getTime() < date.getTime() ? <button className="mt-2em ml-10px" onClick={this.onClick}>チケットはこちら</button> : '' }
+            
+          </div>
+          <div className="column2-right images">
+            { (concert.attributes['image1']) ?
+              <Thumbnail src={ concert.attributes['image1'] } largeImageSrc={ concert.attributes['image1'] } alt="パンフレット" />
+            : '' }
+            { (concert.attributes['image2']) ?
+              <Thumbnail src={ concert.attributes['image2'] } largeImageSrc={ concert.attributes['image2'] } alt="パンフレット" />
+            : '' }
+          </div>
+        </article>
+        <hr />
+      </div>
+    )
+  }.bind(this)) : 
+    <div className='loading'></div> 
+  }
+
 </section>
 <Footer />
 </div>

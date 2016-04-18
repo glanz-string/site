@@ -3,6 +3,8 @@ var ticketMail = new SendMail({
 	subject: "Tickets　from glanz.s602.xrea.com"
 });
 
+var concerts = new ConcertsCollection({});
+
 React.render(
 React.createElement(Router, {root: ""}, 
 	React.createElement(Content, {path: "", reactClass: Top}), 
