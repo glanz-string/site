@@ -27899,6 +27899,8 @@ var _thumbnail = require('./thumbnail');
 
 var _thumbnail2 = _interopRequireDefault(_thumbnail);
 
+var _reactRouter = require('react-router');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27919,7 +27921,7 @@ var Top = function (_React$Component) {
   _createClass(Top, [{
     key: 'onClick',
     value: function onClick() {
-      Backbone.history.navigate("tickets", true);
+      _reactRouter.browserHistory.push("tickets", true);
     }
   }, {
     key: 'render',
@@ -27953,7 +27955,7 @@ var Top = function (_React$Component) {
 
 exports.default = Top;
 
-},{"./ad":238,"./footer":241,"./header":242,"./thumbnail":244,"react":227}],247:[function(require,module,exports){
+},{"./ad":238,"./footer":241,"./header":242,"./thumbnail":244,"react":227,"react-router":85}],247:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

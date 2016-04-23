@@ -3,10 +3,11 @@ import Header from './header'
 import Footer from './footer'
 import Ad from './ad'
 import Thumbnail from './thumbnail'
+import { browserHistory } from 'react-router'
 
 export default class Top extends React.Component {
   onClick() {
-    Backbone.history.navigate("tickets",true)
+    browserHistory.push("tickets",true)
   }
   render() {
     console.log("index rendered");
