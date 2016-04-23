@@ -6,7 +6,7 @@
   -webkit-margin-start: 0;
   -webkit-margin-end: 0;
 }
-html,body {
+html,body, #app {
   height: 100%;
 }
 
@@ -84,7 +84,9 @@ header > nav > ul > li > a:hover {
   transition: 0.2s;
   /*-webkit-transition: 0.2s;*/
 }
-
+header > nav > ul > li > img {
+  vertical-align: bottom
+}
 footer {
   box-sizing: border-box;
   height: 80px;
