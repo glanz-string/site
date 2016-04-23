@@ -4,5 +4,7 @@
 /server.py
 .DS_store
 /node_modules/
+/api/
+/.fast-cgi-bin/
 *.swp
 *.swo
