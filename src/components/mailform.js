@@ -20,9 +20,6 @@ export default class MailForm extends React.Component {
       status: true,
     }
   }
-  componentWillMount() {
-    //this.props.model.reset();
-  }
   componentDidMount() {
     this._getToken()
   }

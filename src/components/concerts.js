@@ -13,7 +13,7 @@ export default class Concerts extends React.Component {
     this.state = { concerts: ConcertsStore.getConcerts() }
   }
   onClick() {
-    browserHistory.push("aboutus",true)
+    browserHistory.push("tickets",true)
   }
   componentWillMount() {
     Actions.receiveConcerts()

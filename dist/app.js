@@ -27077,7 +27077,7 @@ var Concerts = function (_React$Component) {
   _createClass(Concerts, [{
     key: 'onClick',
     value: function onClick() {
-      _reactRouter.browserHistory.push("aboutus", true);
+      _reactRouter.browserHistory.push("tickets", true);
     }
   }, {
     key: 'componentWillMount',
@@ -27479,11 +27479,6 @@ var MailForm = function (_React$Component) {
   }
 
   _createClass(MailForm, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      //this.props.model.reset();
-    }
-  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this._getToken();
