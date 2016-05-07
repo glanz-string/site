@@ -27454,7 +27454,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var TOKEN_TO_GET_TOKEN = 'GET_TOKEN';
 //const API_URL = 'http://glanz.s602.xrea.com/php/sendmailtest.php'
-var API_URL = 'http://glanz.s602.xrea.com/php/sendmail.php';
+var API_URL = '/php/sendmail.php';
 var subject = 'Tickets　from glanz.s602.xrea.com';
 
 var MailForm = function (_React$Component) {

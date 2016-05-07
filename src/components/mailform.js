@@ -3,7 +3,7 @@ import request from 'superagent'
 
 const TOKEN_TO_GET_TOKEN = 'GET_TOKEN'
 //const API_URL = 'http://glanz.s602.xrea.com/php/sendmailtest.php'
-const API_URL = 'http://glanz.s602.xrea.com/php/sendmail.php'
+const API_URL = '/php/sendmail.php'
 var subject = 'Tickets　from glanz.s602.xrea.com'
 
 export default class MailForm extends React.Component {
