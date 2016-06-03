@@ -6,5 +6,6 @@
 /node_modules/
 /api/
 /.fast-cgi-bin/
+/php/
 *.swp
 *.swo
