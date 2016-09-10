@@ -27912,10 +27912,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Top = function (_React$Component) {
   _inherits(Top, _React$Component);
 
-  function Top() {
+  function Top(props) {
     _classCallCheck(this, Top);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Top).apply(this, arguments));
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Top).call(this, props));
   }
 
   _createClass(Top, [{

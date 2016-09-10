@@ -6,6 +6,9 @@ import Thumbnail from './thumbnail'
 import { browserHistory } from 'react-router'
 
 export default class Top extends React.Component {
+  constructor(props) {
+    super(props)
+  }
   onClick() {
     browserHistory.push("tickets",true)
   }
