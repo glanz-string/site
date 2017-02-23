@@ -26792,7 +26792,7 @@ exports.default = {
   }
 };
 
-},{"../dispatcher/dispatcher":247,"superagent":230}],236:[function(require,module,exports){
+},{"../dispatcher/dispatcher":248,"superagent":230}],236:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -26854,7 +26854,7 @@ _reactDom2.default.render(_react2.default.createElement(
 //  <Content path="contactus" reactClass={ContactUs} />
 //</Router>
 
-},{"./components/aboutus":237,"./components/concerts":239,"./components/contactus":240,"./components/tickets":245,"./components/top":246,"react":227,"react-dom":55,"react-router":85}],237:[function(require,module,exports){
+},{"./components/aboutus":237,"./components/concerts":239,"./components/contactus":240,"./components/tickets":246,"./components/top":247,"react":227,"react-dom":55,"react-router":85}],237:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26944,7 +26944,7 @@ var AboutUs = function (_React$Component) {
 
 exports.default = AboutUs;
 
-},{"./ad":238,"./footer":241,"./header":242,"react":227}],238:[function(require,module,exports){
+},{"./ad":238,"./footer":242,"./header":243,"react":227}],238:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27186,7 +27186,7 @@ var Concerts = function (_React$Component) {
 
 exports.default = Concerts;
 
-},{"../actions/actions":235,"../stores/ConcertsStore":248,"./ad":238,"./footer":241,"./header":242,"./thumbnail":244,"react":227,"react-router":85}],240:[function(require,module,exports){
+},{"../actions/actions":235,"../stores/ConcertsStore":249,"./ad":238,"./footer":242,"./header":243,"./thumbnail":245,"react":227,"react-router":85}],240:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27280,7 +27280,60 @@ var ContactUs = function (_React$Component) {
 
 exports.default = ContactUs;
 
-},{"./ad":238,"./footer":241,"./header":242,"react":227}],241:[function(require,module,exports){
+},{"./ad":238,"./footer":242,"./header":243,"react":227}],241:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CSSLoader = function (_React$Component) {
+  _inherits(CSSLoader, _React$Component);
+
+  function CSSLoader() {
+    _classCallCheck(this, CSSLoader);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(CSSLoader).apply(this, arguments));
+  }
+
+  _createClass(CSSLoader, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "css-loading" },
+        _react2.default.createElement("div", { className: "circle one" }),
+        _react2.default.createElement("div", { className: "circle two" }),
+        _react2.default.createElement("div", { className: "circle three" }),
+        _react2.default.createElement("div", { className: "circle four" }),
+        _react2.default.createElement("div", { className: "circle five" }),
+        _react2.default.createElement("div", { className: "circle six" }),
+        _react2.default.createElement("div", { className: "circle seven" }),
+        _react2.default.createElement("div", { className: "circle eight" })
+      );
+    }
+  }]);
+
+  return CSSLoader;
+}(_react2.default.Component);
+
+exports.default = CSSLoader;
+
+},{"react":227}],242:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27327,7 +27380,7 @@ var Footer = function (_Component) {
 
 exports.default = Footer;
 
-},{"react":227}],242:[function(require,module,exports){
+},{"react":227}],243:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27427,7 +27480,7 @@ var Header = function (_React$Component) {
 
 exports.default = Header;
 
-},{"react":227,"react-router":85}],243:[function(require,module,exports){
+},{"react":227,"react-router":85}],244:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27689,7 +27742,7 @@ var MailForm = function (_React$Component) {
 
 exports.default = MailForm;
 
-},{"react":227,"superagent":230}],244:[function(require,module,exports){
+},{"react":227,"superagent":230}],245:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27766,7 +27819,7 @@ var Thumbnail = function (_React$Component) {
 
 exports.default = Thumbnail;
 
-},{"react":227}],245:[function(require,module,exports){
+},{"react":227}],246:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27870,7 +27923,7 @@ var Tickets = function (_React$Component) {
 
 exports.default = Tickets;
 
-},{"./ad":238,"./footer":241,"./header":242,"./mailform":243,"react":227}],246:[function(require,module,exports){
+},{"./ad":238,"./footer":242,"./header":243,"./mailform":244,"react":227}],247:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27882,6 +27935,14 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _ConcertsStore = require('../stores/ConcertsStore');
+
+var _ConcertsStore2 = _interopRequireDefault(_ConcertsStore);
+
+var _actions = require('../actions/actions');
+
+var _actions2 = _interopRequireDefault(_actions);
 
 var _header = require('./header');
 
@@ -27901,6 +27962,10 @@ var _thumbnail2 = _interopRequireDefault(_thumbnail);
 
 var _reactRouter = require('react-router');
 
+var _css_loader = require('./css_loader');
+
+var _css_loader2 = _interopRequireDefault(_css_loader);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27915,7 +27980,10 @@ var Top = function (_React$Component) {
   function Top(props) {
     _classCallCheck(this, Top);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Top).call(this, props));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Top).call(this, props));
+
+    _this.state = { concerts: _ConcertsStore2.default.getConcerts() };
+    return _this;
   }
 
   _createClass(Top, [{
@@ -27924,8 +27992,25 @@ var Top = function (_React$Component) {
       _reactRouter.browserHistory.push("tickets", true);
     }
   }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      _actions2.default.receiveConcerts();
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this._onload = function () {
+        _this2.setState({ concerts: _ConcertsStore2.default.getConcerts() });
+      };
+      _ConcertsStore2.default.onChange(this._onload);
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this3 = this;
+
       console.log("index rendered");
       return _react2.default.createElement(
         'div',
@@ -27938,7 +28023,13 @@ var Top = function (_React$Component) {
           _react2.default.createElement(
             'p',
             null,
-            _react2.default.createElement(_thumbnail2.default, { src: '/images/concerts/3_1small.jpg', largeImageSrc: '/images/concerts/3_1.jpg', style: { width: "400px", height: "auto" } }),
+            this.state.concerts.length > 0 ? function () {
+              return _react2.default.createElement(_thumbnail2.default, { src: _this3.state.concerts[0]['image1'], largeImageSrc: '/images/concerts/3_1.jpg', style: { width: "400px", height: "auto" } });
+            }() : _react2.default.createElement(
+              'div',
+              { className: 'loading-top' },
+              _react2.default.createElement(_css_loader2.default, null)
+            ),
             _react2.default.createElement(
               'button',
               { className: 'top-info-button mt-1em', onClick: this.onClick },
@@ -27955,7 +28046,7 @@ var Top = function (_React$Component) {
 
 exports.default = Top;
 
-},{"./ad":238,"./footer":241,"./header":242,"./thumbnail":244,"react":227,"react-router":85}],247:[function(require,module,exports){
+},{"../actions/actions":235,"../stores/ConcertsStore":249,"./ad":238,"./css_loader":241,"./footer":242,"./header":243,"./thumbnail":245,"react":227,"react-router":85}],248:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27966,7 +28057,7 @@ var _flux = require('flux');
 
 exports.default = new _flux.Dispatcher();
 
-},{"flux":32}],248:[function(require,module,exports){
+},{"flux":32}],249:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28048,7 +28139,7 @@ _dispatcher2.default.register(function (action) {
   }
 });
 
-},{"../dispatcher/dispatcher":247,"events":5}]},{},[236])
+},{"../dispatcher/dispatcher":248,"events":5}]},{},[236])
 
 
 //# sourceMappingURL=map/app.js.map

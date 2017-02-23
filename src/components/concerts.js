@@ -20,7 +20,7 @@ export default class Concerts extends React.Component {
   }
   componentDidMount() {
     this._onload = () => {
-      this.setState({ concerts: ConcertsStore.getConcerts() }) 
+      this.setState({ concerts: ConcertsStore.getConcerts() })
     }
     ConcertsStore.onChange(this._onload)
   }
